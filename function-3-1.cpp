@@ -11,12 +11,12 @@ bool is_fanarray(int array[], int n)
         return false;
     }
 
-    int peak = std::round(n / 2) - 1;
+    int peak = std::round(n / 2);
     bool left = true;
     bool right = true;
 
     // Left side
-    for (int i = 0; i < peak; i++)
+    for (int i = 0; i < peak - 1; i++)
     {
         if (array[i] > array[i + 1])
         {
@@ -26,7 +26,7 @@ bool is_fanarray(int array[], int n)
     }
 
     // Right side
-    for (int j = peak; j < n - 1; j++)
+    for (int j = peak - 1; j < n - 1; j++)
     {
         if (array[j] < array[j+1])
         {

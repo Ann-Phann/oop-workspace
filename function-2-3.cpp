@@ -29,6 +29,6 @@ void two_five_nine(int array[], int n)
             break;
         }
     }
-    cout << "2:" << count_2 << ";5:" << count_5 << ";9:" << count_9;
+    cout << "2:" << count_2 << ";5:" << count_5 << ";9:" << count_9 << endl;
     
 }

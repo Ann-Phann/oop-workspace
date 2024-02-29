@@ -26,7 +26,7 @@ bool is_fanarray(int array[], int n)
     }
 
     // Right side
-    for (int j = peak - 1; j < n - 1; j++)
+    for (int j = peak; j < n - 1; j++)
     {
         if (array[j] < array[j+1])
         {

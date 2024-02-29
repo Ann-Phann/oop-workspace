@@ -7,11 +7,8 @@ void two_five_nine(int array[], int n)
     int count_5 = 0;
     int count_9 = 0;
 
-    if (n < 1)
-    {
-        cout << "\n";
-    }
 
+//if n < 1 --> it still print out how many 2 5 9 --> 2:0;5:0:9:0;
     for (int i = 0; i < n; i++)
     {
         switch (array[i])
@@ -29,6 +26,6 @@ void two_five_nine(int array[], int n)
             break;
         }
     }
-    cout << "2:" << count_2 << ";5:" << count_5 << ";9:" << count_9 << endl;
+    cout << "2:" << count_2 << ";5:" << count_5 << ";9:" << count_9 << ";" << endl;
     
 }

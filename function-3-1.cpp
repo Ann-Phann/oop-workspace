@@ -21,15 +21,17 @@ bool is_fanarray(int array[], int n)
         if (array[i] > array[i + 1])
         {
             left = false;
+            break;
         }
     }
 
     // Right side
-    for (int j = peak; j > n - 1; j++)
+    for (int j = peak; j < n - 1; j++)
     {
         if (array[j] < array[j+1])
         {
             right = false;
+            break;
         }
     }
 

@@ -36,7 +36,10 @@ double weighted_average(int array[], int n)
             ++count;
         }
     }
-    double avg = sum / n;
+
+    // Calculate the total count of distinct elements
+    int total_count = n - (array[n - 1] == array[0] ? 1 : 0);
+    double avg = sum / total_count;
 
     return avg;
 }

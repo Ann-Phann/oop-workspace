@@ -28,11 +28,8 @@ double weighted_average( int arr[], int n) {
     double weightedSum = 0.0;
     for (const auto& pair : frequency) {
         totalFrequency += pair.second;
-        weightedSum += pair.first * pair.second
+        weightedSum += pair.first * pair.second;
     }
-
-   
-
 
     return weightedSum / totalFrequency;
 }

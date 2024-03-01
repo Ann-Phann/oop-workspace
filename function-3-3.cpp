@@ -10,30 +10,30 @@ The function must return 0 if the size parameter, n, is less than 1.*/
 using namespace std;
 #include <unordered_map>
 
-double weighted_average(int array[], int n)
-{
-    if (n < 1) 
-    {
+double weighted_average( int arr[], int n) {
+
+    if (n < 1) {
         return 0;
     }
-    
-    // Count the frequency of each element using unordered_map
+    // Create a hash map to store frequency of elements
     std::unordered_map<int, int> frequency;
-    for (int i = 0; i < n; ++i)
-    {
-        frequency[array[i]]++;
+
+    // Calculate frequency of each element
+    for (int i = 0; i < n; ++i) {
+        frequency[arr[i]]++;
     }
 
-    double sum = 0.0;
-
-    // Iterate through the frequency map and calculate the weighted sum
-    for (const auto& pair : frequency)
-    {
-        sum += pair.first * pair.second;
+    // Calculate total frequency
+    int totalFrequency = 0;
+    for (const auto& pair : frequency) {
+        totalFrequency += pair.second;
     }
-    
-    // Calculate the weighted average
-    double avg = sum / n;
 
-    return avg;
+    // Calculate weighted sum
+    double weightedSum = 0.0;
+    for (const auto& pair : frequency) {
+        weightedSum += pair.first * pair.second / static_cast<double>(totalFrequency);
+    }
+
+    return weightedSum;
 }

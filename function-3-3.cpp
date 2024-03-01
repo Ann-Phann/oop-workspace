@@ -20,29 +20,20 @@ double weighted_average(int array[], int n)
     
     //if it's different to the existing one --> update new one
    
-    std::set <int> unique_num; // using library set that auto show unique num
-    
-    for (int i = 0; i < n; i++)
-    {
-        unique_num.insert(array[i]); 
-    }
-
-    // declare and add unique number to new array 
-    std::vector<int> unique_array (unique_num.begin(), unique_num.end());  
-    size_t unique_size = unique_array.size();
+    std::set <int> unique_num(array, array + n); // using library set that auto show unique num
     double sum = 0;
 
-    for (size_t i = 0; i < unique_size; i++)
+    for (int num : unique_num)
     {
         int count = 0;
         for ( int j = 0; j < n; j++)
         {
-            if( array[j] == unique_array[i])
+            if( array[j] == num)
             {
                 count++;
             }
         }
-        sum += unique_array[i] * count ;
+        sum += num * count ;
     }
 
     return sum /static_cast<double>(n);

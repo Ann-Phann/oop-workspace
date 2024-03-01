@@ -6,30 +6,37 @@ the weighted average is (1 * 3 / 6) + (2 * 1 / 6) + (1 * 3 / 6)  + (4 * 1 / 6) +
 The function must return 0 if the size parameter, n, is less than 1.*/
 
 #include <iostream>
-#include <algorithm>
 using namespace std;
 #include <unordered_map>
 
-double weighted_average( int arr[], int n) {
+double weighted_average(int array[], int n) {
+    if (n < 1) // If size parameter is less than 1, return 0
+    {
+        return 0.0;
+    }    
 
-    if (n < 1) {
-        return 0;
-    }
-    // Create a hash map to store frequency of elements
-    std::unordered_map<int, int> frequency;
-
-    // Calculate frequency of each element
-    for (int i = 0; i < n; ++i) {
-        frequency[arr[i]]++;
-    }
-
-    // Calculate total frequency
-    int totalFrequency = 0;
-    double weightedSum = 0.0;
-    for (const auto& pair : frequency) {
-        totalFrequency += pair.second;
-        weightedSum += pair.first * pair.second;
+   // find unique elements and their frequency
+    std::unordered_map<int, int> freq;
+    for(int i = 0; i < n; i++)
+    {
+        freq[array[i]]++;
     }
 
-    return weightedSum / totalFrequency;
+    //calculate the total frequency
+    int total_freq = 0;
+    for(auto it = freq.begin(); it != freq.end(); it++)
+    {
+        total_freq += it->second;
+    }
+
+    //loop through the array and multiply each elements by its frequency
+    double sum = 0.0;
+    for ( int i =0; i < n; i++)
+    {
+        sum += array[i] * freq[array[i]];
+
+    }
+
+    //return the weighted avg
+    return sum / total_freq;
 }

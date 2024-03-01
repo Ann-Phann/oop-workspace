@@ -9,7 +9,7 @@ int median_array(int array[], int n);
 
 int main (void)
 {
-    int array[] = {3,5,2,1,4};
+    int array[] = {3,5,2,1,4,6,7};
     int length = sizeof(array) / sizeof(array[0]);
     cout << median_array(array, length) << "\n";
 }

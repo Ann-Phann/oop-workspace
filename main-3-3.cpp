@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std; 
 
-void weighted_average(int array[], int n);
+double weighted_average(int array[], int n);
 
 int main (void) 
 {

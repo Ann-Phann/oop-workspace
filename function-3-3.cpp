@@ -7,29 +7,43 @@ The function must return 0 if the size parameter, n, is less than 1.*/
 
 #include <iostream>
 #include <set>
+#include <vector>
 using namespace std;
 
-void weighted_average(int array[], int n)
+double weighted_average(int array[], int n)
 {
-    // if (n < 1) 
-    // {
-    //     return 0;
-    // }
+    if (n < 1) 
+    {
+        return 0;
+    }
     // element that appear --> how many times appeared --> function math
     
     //if it's different to the existing one --> update new one
-    int first = array[0];
-    set <int> unique_num; // using library set that auto show unique num 
-
+   
+    std::set <int> unique_num; // using library set that auto show unique num
+    
     for (int i = 0; i < n; i++)
     {
         unique_num.insert(array[i]); 
     }
-    
-    for (auto& unique : unique_num)
-    {
-        cout << unique << " ";
-    }
-    
 
+    // declare and add unique number to new array 
+    std::vector<int> unique_array (unique_num.begin(), unique_num.end());  
+    size_t unique_size = unique_array.size();
+    double sum = 0;
+
+    for (size_t i = 0; i < unique_size; i++)
+    {
+        int count = 0;
+        for ( int j = 0; j < n; j++)
+        {
+            if( array[j] == unique_array[i])
+            {
+                count++;
+            }
+        }
+        sum += unique_array[i] * count / static_cast<double>(n);
+    }
+
+    return sum;
 }

@@ -8,6 +8,7 @@ The function must return 0 if the size parameter, n, is less than 1.*/
 #include <iostream>
 #include <algorithm>
 using namespace std;
+#include <unordered_map>
 
 double weighted_average(int array[], int n)
 {
@@ -15,31 +16,24 @@ double weighted_average(int array[], int n)
     {
         return 0;
     }
-    // element that appear --> how many times appeared --> function math
     
-    //if it's different to the existing one --> update new one
-   
-    // sort the array
-    std::sort(array, array + n);
-
-    double sum = 0.0;
-    int count = 1;
-
-    for ( int i = 1; i <= n; ++i)
+    // Count the frequency of each element using unordered_map
+    std::unordered_map<int, int> frequency;
+    for (int i = 0; i < n; ++i)
     {
-        if(i == n || array[i] != array[i - 1]) 
-        {
-            sum += array[i - 1] * count;
-            count = 1;
-        } else 
-        {
-            ++count;
-        }
+        frequency[array[i]]++;
     }
 
-    // Calculate the total count of distinct elements
-    int total_count = n - (array[n - 1] == array[0] ? 1 : 0);
-    double avg = sum / total_count;
+    double sum = 0.0;
+
+    // Iterate through the frequency map and calculate the weighted sum
+    for (const auto& pair : frequency)
+    {
+        sum += pair.first * pair.second;
+    }
+    
+    // Calculate the weighted average
+    double avg = sum / n;
 
     return avg;
 }

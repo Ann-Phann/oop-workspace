@@ -33,8 +33,8 @@ double weighted_average(int array[], int n)
                 count++;
             }
         }
-        sum += num * count ;
+        sum += num * count / static_cast<double>(n) ;
     }
 
-    return sum /static_cast<double>(n);
+    return sum ;
 }

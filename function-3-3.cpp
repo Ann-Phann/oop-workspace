@@ -6,8 +6,7 @@ the weighted average is (1 * 3 / 6) + (2 * 1 / 6) + (1 * 3 / 6)  + (4 * 1 / 6) +
 The function must return 0 if the size parameter, n, is less than 1.*/
 
 #include <iostream>
-#include <set>
-#include <vector>
+#include <algorithm>
 using namespace std;
 
 double weighted_average(int array[], int n)
@@ -20,21 +19,27 @@ double weighted_average(int array[], int n)
     
     //if it's different to the existing one --> update new one
    
-    std::set <int> unique_num(array, array + n); // using library set that auto show unique num
-    double sum = 0;
+    // sort the array
+    std::sort(array, array + n);
 
-    for (int num : unique_num)
+    double sum = 0.0;
+    int count = 1;
+
+    for ( int i = 1; i < n; i++)
     {
-        int count = 0;
-        for ( int j = 0; j < n; j++)
+        if(array[i] != array[i - 1]) 
         {
-            if( array[j] == num)
-            {
-                count++;
-            }
+            sum += array[i - 1] * count;
+            count = 1;
+        } else 
+        {
+            ++count;
         }
-        sum += num * count / static_cast<double>(n) ;
     }
 
-    return sum ;
+    sum += array[n - 1] * count;
+
+    double avg = sum / n;
+
+    return avg;
 }

@@ -25,15 +25,14 @@ double weighted_average( int arr[], int n) {
 
     // Calculate total frequency
     int totalFrequency = 0;
-    for (const auto& pair : frequency) {
-        totalFrequency += pair.second;
-    }
-
-    // Calculate weighted sum
     double weightedSum = 0.0;
     for (const auto& pair : frequency) {
-        weightedSum += pair.first * pair.second / static_cast<double>(totalFrequency);
+        totalFrequency += pair.second;
+        weightedSum += pair.first * pair.second
     }
 
-    return weightedSum;
+   
+
+
+    return weightedSum / totalFrequency;
 }

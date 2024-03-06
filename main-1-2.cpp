@@ -18,11 +18,12 @@ int main(void)
         {0,0,0,0,0,0,0,0,0,1},
     };
 
-    if (is_identity(array) == 0)
+    if (is_identity(array) == 1)
     {
         cout << "This is identity matrix";
     }
     else {
         cout << "This is not identity matrix";
     }
+    cout << is_identity(array);
 }

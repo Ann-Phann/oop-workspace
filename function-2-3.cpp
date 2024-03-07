@@ -4,7 +4,7 @@ using namespace std;
 // sum if palindrome
 
 bool is_palindrome( int integers[], int n);
-int sum_elements( int integers[], int n);
+int sum_array_elements( int integers[], int n);
 
 
 int sum_if_palindrome(int integers[], int n) 
@@ -17,7 +17,7 @@ int sum_if_palindrome(int integers[], int n)
 
     if( is_palindrome(integers, n))
     {
-        result_sum = sum_elements(integers, n);
+        result_sum = sum_array_elements(integers, n);
     } else {
         return -2;
     }

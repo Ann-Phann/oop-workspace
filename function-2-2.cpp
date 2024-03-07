@@ -12,7 +12,7 @@ int binary_to_int (int binary_digits[], int number_of_digits)
     int decimal_num = 0;
     for (int i = 0; i < number_of_digits; i++)
     {
-        decimal_num = decimal_num + binary_digits[i] * pow(2,i);
+        decimal_num = decimal_num + binary_digits[number_of_digits - i - 1] * pow(2,i);
     }
     return decimal_num;
 }

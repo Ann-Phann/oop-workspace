@@ -56,7 +56,7 @@ bool is_palindrome( int integers[], int n)
     return true;
 }
 
-int sum_elements( int integers[], int n)
+int sum_array_elements( int integers[], int n)
 {
     if ( n < 1)
     {

@@ -6,9 +6,6 @@ create a double array, call this arrayMin function, and then print the minimum v
 #include <iostream>
 using namespace std;
 
-
-
-
 double arrayMin(double* array, int size)
 {
     int min = array[0];
@@ -19,6 +16,6 @@ double arrayMin(double* array, int size)
             min = array[i];
         }
     }
-    return (double)min;
+    return 1.0 * min;
 }
 

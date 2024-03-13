@@ -14,6 +14,7 @@ int main (void)
 
     //part 2
     changeValue(ptr_num);
+    cout << endl;
 
     //part 3
     double array[] = {10, 20, 30, 40, 50};

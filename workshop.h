@@ -4,7 +4,7 @@ using namespace std;
 void changeValue(double* num)
 {
     *num = 42;    
-    cout << "after change value is: " << *num << endl;
+    // cout << "after change value is: " << *num << endl;
 }
 
 void printArray(double* array, int n)

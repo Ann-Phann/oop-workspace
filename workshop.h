@@ -53,10 +53,10 @@ double* dynamicArray(int size, double m)
         new_array[i] = m;
     }
     
-    for (int j = 0; j < size; j++)
-    {
-        cout << new_array[j] << " ";
-    }
-    cout << endl << endl;
+    // for (int j = 0; j < size; j++)
+    // {
+    //     cout << new_array[j] << " ";
+    // }
+    // cout << endl << endl;
     return new_array;
 }

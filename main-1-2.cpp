@@ -14,4 +14,5 @@ int main (void)
     {
         cout << result[i] << " ";
     }
+    delete [] result;
 }

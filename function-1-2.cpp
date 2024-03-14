@@ -6,7 +6,7 @@ to each element in the array. In your main-1-2.cpp, create a double array, call 
 #include <iostream>
 using namespace std;
 
-double* modifyArray(double* array, int size, double value)
+void modifyArray(double* array, int size, double value)
 {
     double* new_arr = new double[size];
 
@@ -21,5 +21,5 @@ double* modifyArray(double* array, int size, double value)
     // }
     // cout << endl;
     
-    return new_arr;
+    
 }

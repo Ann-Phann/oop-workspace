@@ -13,6 +13,7 @@ void modifyArray(double* array, int size, double value)
     for (int i = 0; i < size; i++)
     {
         new_arr[i] = array[i] + value;
+        cout << new_arr[i];
     }
     delete [] new_arr;
 }

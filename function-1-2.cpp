@@ -8,12 +8,12 @@ using namespace std;
 
 void modifyArray(double* array, int size, double value)
 {
-    double* new_arr = new double(size);
+    double* new_arr = new double[size];
 
     for (int i = 0; i < size; i++)
     {
         new_arr[i] = array[i] + value;
-        cout << new_arr[i];
     }
+    
     delete [] new_arr;
 }

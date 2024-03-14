@@ -9,5 +9,10 @@ using namespace std;
 
 double* duplicateArray(double* array, int size)
 {
-    
+    double* dup = new double[size];
+    for (int i = 0; i< size; i++)
+    {
+        dup[i] = array[i];
+    }
+    return dup;
 }

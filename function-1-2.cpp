@@ -15,11 +15,11 @@ void modifyArray(double* array, int size, double value)
         new_arr[i] = array[i] + value;
     }
 
-    // for (int j = 0; j < size; j++)
-    // {
-    //     cout << new_arr[j] << " ";
-    // }
-    // cout << endl;
+    for (int j = 0; j < size; j++)
+    {
+        cout << new_arr[j] << " ";
+    }
+    cout << endl;
     
     
 }

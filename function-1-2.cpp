@@ -19,5 +19,7 @@ void modifyArray(double* array, int size, double value)
     {
         cout << new_arr[j] << " ";
     }
+    cout << endl;
+    
     delete [] new_arr;
 }

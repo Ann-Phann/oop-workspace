@@ -9,4 +9,5 @@ int main (void)
     double num = 1; 
     int n = sizeof(array)/sizeof(array[0]);
     modifyArray(array, n, num);
+
 }

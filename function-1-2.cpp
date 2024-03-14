@@ -8,8 +8,11 @@ using namespace std;
 
 void modifyArray(double* array, int size, double value)
 {
+    double* new_arr = new double(size);
+
     for (int i = 0; i < size; i++)
     {
-        cout << array[i] + value << " ";
+        new_arr[i] = array[i] + value;
     }
+    delete [] new_arr;
 }

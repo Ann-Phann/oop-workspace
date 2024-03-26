@@ -8,7 +8,6 @@ int main(void)
 {
     int* result;
     result = readNumbers();
-    int n = 10;
-    printNumbers(result, n);
+    printNumbers(result, 10);
     delete [] result;
 }

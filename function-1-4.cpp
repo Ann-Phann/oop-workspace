@@ -5,4 +5,7 @@ the same array of n Person structs as the original.*/
 #include "Person.h"
 using namespace std;
 
-PersonList shallowCopyPersonList(PersonList pl);
+PersonList shallowCopyPersonList(PersonList pl)
+{
+    
+}

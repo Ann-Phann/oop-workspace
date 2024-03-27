@@ -26,12 +26,12 @@ bool Orchestra :: has_instrument(string instrument)
 {
     for (int i = 0; i < current_size; i++)
     {
-        if (member[i].get_instrument() != instrument)
+        if (member[i].get_instrument() == instrument)
         {
-            return false;
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 Musician* Orchestra :: get_members()

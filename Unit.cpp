@@ -42,7 +42,7 @@ Unit ::Unit(int unit_val, int num_beds, double unit_size)
         area = 0;
     }
     else {
-        beds = unit_val;
+        beds = num_beds;
         val = unit_val;
         area = unit_size;
     }

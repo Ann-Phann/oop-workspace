@@ -38,8 +38,10 @@ int main (void)
 
     //get a list of unit
     Unit* list = a1.get_Contents();
-    // // print the details of each musician
-    // for (int i = 0; i < a1.get_Current_Number_of_Units(); i++) {
-    // cout << "Unit " << i+1 << " has beds " << u1.get_Num_Bedrooms() << "has value: " << u1[i].get_experience() << " years of experience" <<endl;
+    // print the details of each musician
+    for (int i = 0; i < a1.get_Current_Number_of_Units(); i++) 
+    {
+    cout << "Unit " << i+1 << " has beds " << list[i].get_Num_Bedrooms() << ", has value: " << list[i].get_Value() << ", has area: " << list[i].get_Area() <<endl;
+    }
 }
 

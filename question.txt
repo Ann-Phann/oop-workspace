@@ -1,0 +1,11 @@
+Q1:
+First, create a base class named Vehicle with a data member called timeOfEntry, which is of type std:: time_t
+, and another data member called ID of type integer. The timeOfEntry data member represents the time at which the vehicle entered the parking lot, and it should be initialized to the time when the object is created. These data members should not be pubilas. The Vehicle class should have a constructor that takes the ID as a parameter, and also a getID() method to return the ID. 
+
+Next, create three derived classes: Car. Bus, and Motorbike. Each of these classes should have a function called getParkingDuration() that returns
+an integer representing the number of seconds that the vehicle has been parked in the lot.
+
+• For the Car class, apply a 10% reduction on the duration the car has been parked in the lot.
+• For the Bus class, apply a 25% reduction,
+• For the Motorbike class, apply a 15% reduction.
+In your main program (main-1-1.cpp), prompt the user for the number and each type of vehicle they want to park and create and fill an array of pointers to Vehicle objects. Then, iterate over the array and call the getParkingDuration function to print the parking duration for each vehicle.

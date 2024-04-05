@@ -4,7 +4,7 @@
 using namespace std;
 
 ParkingLot::ParkingLot(int maxSlot) {
-    maxSlot = maxSlot;
+    this->maxSlot = maxSlot;
     occupied = 0;
     vehicles = new Vehicle *[maxSlot];
     for (int i = 0; i < maxSlot; i++) {
@@ -40,21 +40,18 @@ int ParkingLot::parkVehicle(Vehicle *vehicle) {
 }
 
 int ParkingLot::unparkVehicle(int Parking_ID) {
-    //check vehicle ID
     for (int j = 0; j < occupied; j++) {
-        if(vehicles[j]->getID() == Parking_ID) {
+        if(vehicles[j] != nullptr && vehicles[j]->getID() == Parking_ID) {
             delete vehicles[j];
+            vehicles[j] = nullptr;
 
-            for (int k = j; k < occupied -1; k++) {
+            for (int k = j; k < occupied - 1; k++) {
                 vehicles[k] = vehicles[k + 1];
             }
             occupied--; 
             return 0;
         }
-        else {
-            cout << "Vehicle not in the lot" << endl;
-        }
     }
-
-    
+    cout << "Vehicle not in the lot" << endl;
+    return -1; // Indicate failure to find the vehicle
 }

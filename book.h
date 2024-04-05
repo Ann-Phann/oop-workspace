@@ -34,12 +34,26 @@ public:
         publisher = "";
     }
 
+// this is overiding inherited function --> one function in the the child replaces another with the same name and signatire in the parent
     void print ()
     {
         Publication :: print();
         cout << "ISBN:  " <<this->ISBN <<endl
              << "pages: " <<this->pages << endl
              << "publisher: "<<this->publisher <<endl;
+    }
+
+// this is overloading inherited functions --> separate functions share the same name with different signature
+    void print(bool short_print) {
+        if (short_print) {
+            Publication :: print();
+    
+        } else {
+            Publication :: print();
+            cout << "ISBN:  " <<this->ISBN <<endl
+             << "pages: " <<this->pages << endl
+             << "publisher: "<<this->publisher <<endl;
+        }
     }
 };
 #endif

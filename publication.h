@@ -15,13 +15,14 @@ public:
         this->year = year_of_pub;
         this->title = a_title;
     }
-
+    //assign the value within the constructor body
     Publication(){
         title = "no title";
         author = "no author";
         year = 0;
     }
-
+    // use constructor delegation to call another constructor wih specific values
+    // Publication() : Publication("no title", "no author", 0){}
     void print()
     {
         cout << "tilte: "<< this->title <<endl

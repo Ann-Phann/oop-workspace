@@ -21,6 +21,16 @@ int main (void)
     book1.print();
     std::cout << "\n";
 
+//apply the short print
+    Book book1("Advanced C++ Programming", "Jane Smith", 2023, 1234567890, 350, "Tech Publishing");
+
+// Call short_print with true to print only basic information
+    book1.print(true);
+    cout << "\n";
+
+// Call short_print with false to print additional information
+    book1.print(false);
+    cout << endl;
 
 }
 

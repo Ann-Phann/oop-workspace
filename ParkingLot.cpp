@@ -12,12 +12,15 @@ ParkingLot::ParkingLot(int maxSlot) {
     }
 }
 
-ParkingLot::~ParkingLot()  {
+ParkingLot::~ParkingLot() {
     for (int i = 0; i < maxSlot; i++) {
-        delete vehicles[i];
+        if (vehicles[i] != nullptr) {
+            delete vehicles[i];
+        }
     }
     delete[] vehicles;
 }
+
 
 int ParkingLot::getCount() {
     return occupied;
@@ -41,14 +44,15 @@ int ParkingLot::parkVehicle(Vehicle *vehicle) {
 
 int ParkingLot::unparkVehicle(int Parking_ID) {
     for (int j = 0; j < occupied; j++) {
-        if(vehicles[j] != nullptr && vehicles[j]->getID() == Parking_ID) {
+        if (vehicles[j] != nullptr && vehicles[j]->getID() == Parking_ID) {
             delete vehicles[j];
-            vehicles[j] = nullptr;
+            vehicles[j] = nullptr; // Set the pointer to nullptr after deletion
 
+            // Shift remaining vehicles in the array
             for (int k = j; k < occupied - 1; k++) {
                 vehicles[k] = vehicles[k + 1];
             }
-            occupied--; 
+            occupied--;
             return 0;
         }
     }

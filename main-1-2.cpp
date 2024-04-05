@@ -40,7 +40,7 @@ int main() {
     int result = s1.unparkVehicle(unparkID);
     if (result == 0) {
         cout << "Vehicle unparked successfully." << endl;
-    } else {
+    } else if (result == -1) {
         cout << "Vehicle not in the lot" << endl;
     }
 

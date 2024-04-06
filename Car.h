@@ -2,7 +2,6 @@
 #define CAR_H
 
 #include <iostream>
-#include <ctime>
 #include "Vehicle.h"
 
 using namespace std;
@@ -10,7 +9,7 @@ using namespace std;
 class Car : public Vehicle
 {
 private:
-    int giay;
+    int second;
 
 public:
     Car(int ID);

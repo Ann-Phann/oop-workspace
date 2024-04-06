@@ -8,6 +8,8 @@ using namespace std;
 Car::Car(int ID): Vehicle(ID){};
 
 int Car::getParkingDuration(){
-    giay = difftime(time(0),timeOfEntry)*0.9;
-    return giay;
+    time_t currentTime;
+    time(&currentTime);
+    second = difftime(currentTime,timeOfEntry);
+    return second;
 };

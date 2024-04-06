@@ -8,6 +8,8 @@ using namespace std;
 Bus::Bus(int ID): Vehicle(ID){};
 
 int Bus::getParkingDuration(){
-    giay = difftime(time(0),timeOfEntry)*0.75;
-    return giay;
+    time_t currentTime;
+    time(&currentTime);
+    second = difftime(currentTime,timeOfEntry);
+    return second;
 };

@@ -8,6 +8,8 @@ using namespace std;
 Motorbike::Motorbike(int ID): Vehicle(ID){};
 
 int Motorbike::getParkingDuration(){
-    giay = difftime(time(0),timeOfEntry)*85/100;
-    return giay;
+    time_t currentTime;
+    time(&currentTime);
+    second = difftime(currentTime,timeOfEntry);
+    return second;
 };

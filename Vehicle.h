@@ -11,7 +11,7 @@ class Vehicle
 protected:
     time_t timeOfEntry;
     int ID;
-    int giay;
+    int second;
 
 public:
     Vehicle();

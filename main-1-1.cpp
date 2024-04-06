@@ -1,45 +1,52 @@
 #include <iostream>
-#include <ctime>
 #include "Vehicle.h"
 #include "Car.h"
-#include "Motorbike.h"
 #include "Bus.h"
-#include<unistd.h> 
+#include "Motorbike.h"
+
 
 using namespace std;
 
-int main(){
-    int vec_num;
-    cout << "How many vehicles you want to add?" << endl;
-    cin >> vec_num;
-    string ans[vec_num];
-    int ans_ID;
+int main(void){
+    int n_cars, n_buses, n_bikes;
 
-    Vehicle *v1[vec_num];
+    cout << "Number of cars: ";
+    cin >> n_cars;
 
-    for (int i = 0; i < vec_num; i++)
-    {
-        ans_ID = 0;
-        cout << "What's type of vehicle you want to add to the parking lot? " <<endl;
-        cin >> ans[i];
-        cout << "Please enter ID of your vehicle: " <<endl;
-        cin >> ans_ID;
-        if (ans[i] == "Car")
-        {
-            v1[i] = new Car(ans_ID);
-        }
-        else if (ans[i] == "Bus")
-        {
-            v1[i] = new Bus(ans_ID);
-        }
-        else if (ans[i] == "Motorbike")
-        {
-            v1[i] = new Motorbike(ans_ID);
-        }
+    cout << "Number of buses: ";
+    cin >> n_buses;
+
+    cout << "Number of motorbikes: ";
+    cin >> n_bikes;
+
+    int numVehicles = n_cars + n_buses + n_bikes;
+    Vehicle **vehicles = new Vehicle *[numVehicles];
+
+    int position = 0;
+
+    for (int c = 1; c <= n_cars; c++) {
+        vehicles[position++] = new Car(c);
     }
 
-    for(int i=0; i<vec_num; i++){
-        cout << ans[i] << " parking duration: " << v1[i]->getParkingDuration() << endl;
+    for (int b = 1; b <= n_buses; b++) {
+        vehicles[position++] = new Bus (b);
     }
-    return 0;
+
+    for (int m = 1; m <= n_bikes; m++) {
+        vehicles[position++] = new Motorbike(m);
+    }
+
+    // print result
+
+    for (int i = 0; i < numVehicles; i++) {
+        cout << "Parking duration of Vehicle " << i+1 << " : " << vehicles[i]->getParkingDuration() << endl;
+    }
+
+     // Free memory 
+    for (int i = 0; i < numVehicles; ++i) {
+        delete vehicles[i];
+    }
+
+    delete[] vehicles;
+  
 }

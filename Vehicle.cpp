@@ -7,7 +7,7 @@ using namespace std;
 Vehicle::Vehicle(): Vehicle(0){};
 
 Vehicle::Vehicle(int ID):ID(ID){
-    timeOfEntry = time(0);
+    time(&timeOfEntry);
 }
 
 int Vehicle::getID(){
@@ -15,8 +15,10 @@ int Vehicle::getID(){
 };
 
 int Vehicle::getParkingDuration(){
-    giay = difftime(time(0),timeOfEntry);
-    return giay;
+    time_t currentTime;
+    time(&currentTime);
+    second = difftime(currentTime,timeOfEntry);
+    return second;
 }
 
 

@@ -73,13 +73,13 @@ int ParkingLot::countOverstayingVehicles(int maxParkingDuration) {
             if (parkingDuration > maxParkingDuration) {
                 totalOverstaying++;
                 
-                if (vName == "Car") {
-                    carOverstaying += parkingDuration - maxParkingDuration;
-                } else if (vName == "Bus") {
-                    busOverstaying += parkingDuration - maxParkingDuration;
-                } else {
-                    bikeOverstaying += parkingDuration - maxParkingDuration;
-                }
+                // if (vName == "Car") {
+                //     carOverstaying += parkingDuration - maxParkingDuration;
+                // } else if (vName == "Bus") {
+                //     busOverstaying += parkingDuration - maxParkingDuration;
+                // } else {
+                //     bikeOverstaying += parkingDuration - maxParkingDuration;
+                // }
             }
         }
     }

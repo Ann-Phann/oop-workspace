@@ -1,40 +1,41 @@
 #include <iostream>
 #include "Vehicle.h"
+#include "ParkingLot.h"
 #include "Car.h"
 #include "Bus.h"
 #include "Motorbike.h"
-#include "ParkingLot.h"
 
 using namespace std;
 
-int main()
-{
-    ParkingLot pl1(10);
-    Vehicle *v1[9];
-    string ans[9];
-    int ans_ID;
+// create an object of Parkangle, class with a capacity of 10 vehicles
+int main() {
 
-    for (int i = 0; i < 10; i++)
-    {
-        cout << "What's type of vehicle you want to add to the parking lot? " << endl;
-        cin >> ans[i];
-        cout << "Please enter ID of your vehicle: " << endl;
-        cin >> ans_ID;
-        if (ans[i] == "Car")
-        {
-            v1[i] = new Car(ans_ID);
-        }
-        else if (ans[i] == "Bus")
-        {
-            v1[i] = new Bus(ans_ID);
-        }
-        else if (ans[i] == "Motorbike")
+    ParkingLot s2(10);
+    int V_ID = 1;
+    int maxParkingDuration = 15;
 
-        {
-            v1[i] = new Motorbike(ans_ID);
-        }
-        pl1.parkVehicle(v1[i]);
+    while (s2.getCount() < 10) {
+        string vehicleType;
+        cout << "Type of vehicle you want to park: ";
+        cin >> vehicleType;
+
+        Vehicle *parkingVehicle = nullptr;
+
+        if(vehicleType == "Car" || vehicleType == "Bus" || vehicleType == "Motorbike") {
+            parkingVehicle = new Vehicle(V_ID++);
+            //parkingVehicle->setVehicle(vehicleType);
+            int ParkingID = s2.parkVehicle(parkingVehicle);
+            if (ParkingID != -1) {
+                cout << "Vehicle parked successfully. Park ID: " << ParkingID << endl;
+            } else {
+                cout << "The lot is full" << endl;
+                break;
+            }
+        } else {
+            cout << "Invalid Vehicle. Please enter Car, Bus, or Motorbike" << endl;
+            continue;
+        }        
     }
-    int overdue = pl1.countOverstayingVehicles(15);
-    cout << "The number of vehicles that have overstayed in the parking lot for more than 10 seconds: " << overdue << endl;
+    
+    cout << "Number of vehicles that have overstayed in the parking lot for more than 15 seconds: " << s2.countOverstayingVehicles(maxParkingDuration) << endl;
 }

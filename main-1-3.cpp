@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// create an object of Parkangle, class with a capacity of 10 vehicles
 int main() {
     ParkingLot s2(10);
     int V_ID = 1;
@@ -34,8 +35,5 @@ int main() {
         }        
     }
     
-    // call the countOverstayingVehicles function
-    cout << "Number of overstaying vehicles: " << s2.countOverstayingVehicles(maxParkingDuration) << endl;
-    
-
+    cout << "Number of vehicles that have overstayed in the parking lot for more than 15 seconds: " << s2.countOverstayingVehicles(maxParkingDuration) << endl;
 }

@@ -1,4 +1,4 @@
-/*
+
 #include <iostream>
 #include "Vehicle.h"
 #include "ParkingLot.h"
@@ -38,36 +38,4 @@ int main() {
     
     cout << "Number of vehicles that have overstayed in the parking lot for more than 15 seconds: " << s2.countOverstayingVehicles(maxParkingDuration) << endl;
 }
-*/
 
-#include "ParkingLot.h"
-#include "Car.h"
-#include "Bus.h"
-#include "Motorbike.h"
-#include <iostream>
-
-int main() {
-    ParkingLot parkingLot(10);
-    int carCount, busCount, bikeCount;
-    std::cout << "How many cars do you want to park? ";
-    std::cin >> carCount;
-    std::cout << "How many buses do you want to park? ";
-    std::cin >> busCount;
-    std::cout << "How many motorbikes do you want to park? ";
-    std::cin >> bikeCount;
-    for (int i = 0; i < carCount; i++) {
-        Car* car = new Car(i + 1);
-        parkingLot.parkVehicle(car);
-    }
-    for (int i = 0; i < busCount; i++) {
-        Bus* bus = new Bus(i + 1 + carCount);
-        parkingLot.parkVehicle(bus);
-    }
-    for (int i = 0; i < bikeCount; i++) {
-        Motorbike* bike = new Motorbike(i + 1 + carCount + busCount);
-        parkingLot.parkVehicle(bike);
-    }
-    int overstayingCount = parkingLot.countOverstayingVehicles(15);
-    std::cout << "Number of overstaying vehicles: " << overstayingCount << std::endl;
-    return 0;
-}

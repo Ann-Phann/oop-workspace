@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Vehicle.h"
 #include "ParkingLot.h"
-
+#include <unistd.h>
 using namespace std;
 
 int main() {
@@ -32,7 +32,7 @@ int main() {
             continue;
         }        
     }
-
+    sleep(16);
     //Count the number of overstayed vehicles
    int result = s2.countOverstayingVehicles(maxParkingTime);
     cout << "Total overstaying vehicles: " << result << endl;

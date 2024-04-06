@@ -60,14 +60,14 @@ int ParkingLot::unparkVehicle(int Parking_ID) {
     return -1; // Indicate failure to find the vehicle
 }
 int ParkingLot::countOverstayingVehicles(int maxParkingDuration) {
-    int carOverstaying = 0;
-    int busOverstaying = 0;
-    int bikeOverstaying = 0;
+    // int carOverstaying = 0;
+    // int busOverstaying = 0;
+    // int bikeOverstaying = 0;
     int totalOverstaying = 0;
 
     for (int k = 0; k < occupied; k++) {
         if (vehicles[k] != nullptr) {
-            string vName = vehicles[k]->getVehicle();
+            //string vName = vehicles[k]->getVehicle();
             int parkingDuration = vehicles[k]->getParkingDuration();
 
             if (parkingDuration > maxParkingDuration) {

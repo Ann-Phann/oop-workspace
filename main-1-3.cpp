@@ -5,11 +5,11 @@
 using namespace std;
 
 int main() {
-    ParkingLot s1(10);
+    ParkingLot s2(10);
     int V_ID = 1;
     int maxParkingTime = 15;
 
-    while (s1.getCount() < 10) {
+    while (s2.getCount() < 10) {
         string vehicleType;
         cout << "Type of vehicle you want to park: ";
         cin >> vehicleType;
@@ -18,7 +18,7 @@ int main() {
 
         if(vehicleType == "Car" || vehicleType == "Bus" || vehicleType == "Motorbike") {
             parkingVehicle = new Vehicle(V_ID++);
-            int ParkingID = s1.parkVehicle(parkingVehicle);
+            int ParkingID = s2.parkVehicle(parkingVehicle);
             if (ParkingID != -1) {
                 cout << "Vehicle parked successfully. Park ID: " << ParkingID << endl;
             } else {
@@ -32,9 +32,8 @@ int main() {
         }        
     }
 
-   // Count overstay vehicles
-   int result = s1.countOverstayingVehicles(maxParkingTime); 
+    //Count the number of overstayed vehicles
+    int result = s2.countOverstayVehicles(maxParkingTime);
     cout << "The number of overstayed vehicles are: " << result << endl;
-
     return 0;
 }

@@ -11,10 +11,11 @@ class ParkingLot {
         ParkingLot(int maxSlot);
         //~ParkingLot();
         int getCount();
-       
+        int getParkingID();
         int parkVehicle(Vehicle *vehicle);
         int unparkVehicle(int Parking_ID);
-        int countOverstayingVehicles(int maxParkingDuration);
+        // parameter maxParkingDuration (in seconds)
+        int countOverstayVehicles(int maxParkingDuration);
 };
 
 #endif // PARKINGLOT_H

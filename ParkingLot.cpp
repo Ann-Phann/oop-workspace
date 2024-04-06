@@ -70,6 +70,3 @@ int ParkingLot::countOverstayingVehicles(int maxParkingDuration) {
     }
     return count;
 }
-
-   
-}

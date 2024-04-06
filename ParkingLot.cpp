@@ -84,9 +84,9 @@ int ParkingLot::countOverstayingVehicles(int maxParkingDuration) {
         }
     }
 
-    cout << "Car overstayed: " << carOverstaying << endl;
+    /* cout << "Car overstayed: " << carOverstaying << endl;
     cout << "Bus overstayed: " << busOverstaying << endl;
-    cout << "Motorbike overstayed: " << bikeOverstaying << endl;
+    cout << "Motorbike overstayed: " << bikeOverstaying << endl; */
 
     return totalOverstaying;
 }

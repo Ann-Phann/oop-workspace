@@ -12,14 +12,14 @@ ParkingLot::ParkingLot(int maxSlot) {
     }
 }
 
-ParkingLot::~ParkingLot() {
-    for (int i = 0; i < maxSlot; i++) {
-        if (vehicles[i] != nullptr) {
-            delete vehicles[i];
-        }
-    }
-    delete[] vehicles;
-}
+// ParkingLot::~ParkingLot() {
+//     for (int i = 0; i < maxSlot; i++) {
+//         if (vehicles[i] != nullptr) {
+//             delete vehicles[i];
+//         }
+//     }
+//     delete[] vehicles;
+// }
 
 
 int ParkingLot::getCount() {

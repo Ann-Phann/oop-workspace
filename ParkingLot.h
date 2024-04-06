@@ -1,6 +1,9 @@
 #ifndef PARKINGLOT_H
 #define PARKINGLOT_H
 #include "Vehicle.h"
+#include <string>
+
+using namespace std;
 class ParkingLot {
     private:
         

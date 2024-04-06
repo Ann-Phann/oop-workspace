@@ -2,11 +2,14 @@
 #define VEHICLE_H
 
 #include <ctime>
+#include <string>
+using namespace std;
 
 class Vehicle {
 private:
     int ID;
     time_t timeOfEntry;
+    string vehicleType;
 
 public:
     Vehicle(int V_ID);
@@ -16,6 +19,9 @@ public:
     time_t get_EntryTime() const;
 
     int getParkingDuration() const;
+
+    void setVehicle(string vehicleName);
+    string getVehicle();
 };
 
 #endif // VEHICLE_H

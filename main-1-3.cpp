@@ -18,6 +18,7 @@ int main() {
 
         if(vehicleType == "Car" || vehicleType == "Bus" || vehicleType == "Motorbike") {
             parkingVehicle = new Vehicle(V_ID++);
+            parkingVehicle->setVehicle(vehicleType);
             int ParkingID = s2.parkVehicle(parkingVehicle);
             if (ParkingID != -1) {
                 cout << "Vehicle parked successfully. Park ID: " << ParkingID << endl;
@@ -33,7 +34,7 @@ int main() {
     }
 
     //Count the number of overstayed vehicles
-    int result = s2.countOverstayingVehicles(maxParkingTime);
-    cout << "The number of overstayed vehicles are: " << result << endl;
+    s2.countOverstayingVehicles(maxParkingTime);
+    
     return 0;
 }

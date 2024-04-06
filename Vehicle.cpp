@@ -17,3 +17,11 @@ int Vehicle::getParkingDuration() const {
     time(&currentTime);
     return difftime(currentTime, timeOfEntry);
 }
+
+void Vehicle::setVehicle(string vehicleName) {
+    this->vehicleType = vehicleName;
+}
+
+string Vehicle::getVehicle() {
+    return vehicleType;
+}

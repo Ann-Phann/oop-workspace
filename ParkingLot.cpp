@@ -59,3 +59,13 @@ int ParkingLot::unparkVehicle(int Parking_ID) {
     cout << "Vehicle not in the lot" << endl;
     return -1; // Indicate failure to find the vehicle
 }
+
+int ParkingLot::countOverstayVehicles(int maxParkingDuration) {
+    int overStayVehicles = 0;
+    for(int k = 0; k < occupied; k++) {
+        if(vehicles[k] != nullptr && vehicles[k]->getParkingDuration() > maxParkingDuration) {
+            overStayVehicles++;
+        }
+    }
+    return overStayVehicles;
+}

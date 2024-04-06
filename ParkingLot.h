@@ -14,7 +14,7 @@ class ParkingLot {
         ParkingLot(int maxSlot);
         ~ParkingLot();
         int getCount();
-        int getParkingID();
+        //int getParkingID();
         int parkVehicle(Vehicle *vehicle);
         int unparkVehicle(int Parking_ID);
         // parameter maxParkingDuration (in seconds)

@@ -12,16 +12,16 @@ time_t Vehicle::get_EntryTime() const {
     return timeOfEntry;
 }
 
-int Vehicle::getParkingDuration() const {
+int Vehicle::getParkingDuration()  {
     time_t currentTime;
     time(&currentTime);
     return difftime(currentTime, timeOfEntry);
 }
 
-void Vehicle::setVehicle(string vehicleName) {
-    this->vehicleType = vehicleName;
-}
+//void Vehicle::setVehicle(string vehicleName) {
+//     this->vehicleType = vehicleName;
+// }
 
-string Vehicle::getVehicle() {
-    return vehicleType;
-}
+//string Vehicle::getVehicle() {
+//     return vehicleType;
+// }

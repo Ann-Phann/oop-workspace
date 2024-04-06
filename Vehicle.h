@@ -9,7 +9,7 @@ class Vehicle {
 private:
     int ID;
     time_t timeOfEntry;
-    string vehicleType;
+    //string vehicleType;
 
 public:
     Vehicle(int V_ID);
@@ -18,10 +18,10 @@ public:
 
     time_t get_EntryTime() const;
 
-    int getParkingDuration() const;
+    int getParkingDuration() ;
 
-    void setVehicle(string vehicleName);
-    string getVehicle();
+    //void setVehicle(string vehicleName);
+    //string getVehicle();
 };
 
 #endif // VEHICLE_H

@@ -10,6 +10,7 @@ Motorbike::Motorbike(int ID): Vehicle(ID){};
 int Motorbike::getParkingDuration(){
     time_t currentTime;
     time(&currentTime);
-    second = difftime(currentTime,timeOfEntry);
+    int duration = difftime(currentTime,timeOfEntry);
+    second = duration - (duration * 0.15);
     return second;
 };

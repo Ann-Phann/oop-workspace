@@ -10,6 +10,7 @@ Car::Car(int ID): Vehicle(ID){};
 int Car::getParkingDuration(){
     time_t currentTime;
     time(&currentTime);
-    second = difftime(currentTime,timeOfEntry);
+    int duration = difftime(currentTime,timeOfEntry);
+    second = duration - (duration * 0.1);
     return second;
 };

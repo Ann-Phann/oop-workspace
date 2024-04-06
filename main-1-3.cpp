@@ -24,6 +24,7 @@ int main() {
             int ParkingID = s2.parkVehicle(parkingVehicle);
             if (ParkingID != -1) {
                 cout << "Vehicle parked successfully. Park ID: " << ParkingID << endl;
+                sleep(1);
             } else {
                 cout << "The lot is full" << endl;
                 delete parkingVehicle;

@@ -60,15 +60,16 @@ int ParkingLot::unparkVehicle(int Parking_ID) {
     return -1; // Indicate failure to find the vehicle
 }
 int ParkingLot::countOverstayingVehicles(int maxParkingDuration) {
-    //return the number of vehicles that have been parked for more than maxParkingDuration
-
     int count = 0;
+    time_t currentTime;
+    time(&currentTime);
     for (int i = 0; i < occupied; i++) {
-        if (vehicles[i]->getParkingDuration() > maxParkingDuration) {
+        if (vehicles[i] != nullptr && vehicles[i]->getParkingDuration() > maxParkingDuration) {
             count++;
         }
     }
     return count;
+}
 
    
 }

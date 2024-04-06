@@ -7,7 +7,7 @@ using namespace std;
 int main() {
     ParkingLot s2(10);
     int V_ID = 1;
-    int maxParkingTime = 15;
+    int maxParkingTime = 0;
 
     while (s2.getCount() < 10) {
         string vehicleType;

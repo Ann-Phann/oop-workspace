@@ -60,35 +60,15 @@ int ParkingLot::unparkVehicle(int Parking_ID) {
     return -1; // Indicate failure to find the vehicle
 }
 int ParkingLot::countOverstayingVehicles(int maxParkingDuration) {
-    // int carOverstaying = 0;
-    // int busOverstaying = 0;
-    // int bikeOverstaying = 0;
-    int totalOverstaying = 0;
+    //return the number of vehicles that have been parked for more than maxParkingDuration
 
-    for (int k = 0; k < occupied; k++) {
-        if (vehicles[k] != nullptr) {
-            //string vName = vehicles[k]->getVehicle();
-            int parkingDuration = vehicles[k]->getParkingDuration();
-
-            if (parkingDuration > maxParkingDuration) {
-                totalOverstaying++;
-                
-                // if (vName == "Car") {
-                //     carOverstaying += parkingDuration - maxParkingDuration;
-                // } else if (vName == "Bus") {
-                //     busOverstaying += parkingDuration - maxParkingDuration;
-                // } else {
-                //     bikeOverstaying += parkingDuration - maxParkingDuration;
-                // }
-            }
+    int count = 0;
+    for (int i = 0; i < occupied; i++) {
+        if (vehicles[i]->getParkingDuration() > maxParkingDuration) {
+            count++;
         }
     }
+    return count;
 
-    /* cout << "Car overstayed: " << carOverstaying << endl;
-    cout << "Bus overstayed: " << busOverstaying << endl;
-    cout << "Motorbike overstayed: " << bikeOverstaying << endl; */
-
-    return totalOverstaying;
+   
 }
-
-

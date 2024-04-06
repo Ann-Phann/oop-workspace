@@ -12,7 +12,7 @@ class ParkingLot {
         Vehicle **vehicles;
     public:
         ParkingLot(int maxSlot);
-        //~ParkingLot();
+        ~ParkingLot();
         int getCount();
         int getParkingID();
         int parkVehicle(Vehicle *vehicle);

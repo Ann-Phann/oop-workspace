@@ -22,7 +22,7 @@ int main() {
                 cout << "Vehicle parked successfully. Park ID: " << ParkingID << endl;
             } else {
                 cout << "The lot is full" << endl;
-                delete parkingVehicle;
+                //delete parkingVehicle;
                 break;
             }
         } else {

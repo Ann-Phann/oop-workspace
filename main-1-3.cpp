@@ -27,7 +27,7 @@ int main() {
                 sleep(1);
             } else {
                 cout << "The lot is full" << endl;
-                delete parkingVehicle;
+                //delete parkingVehicle;
                 break;
             }
         } else {

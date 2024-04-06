@@ -67,13 +67,13 @@ int ParkingLot::countOverstayingVehicles(int maxParkingDuration) {
     for (int k = 0; k < occupied; k++) {
          string vName = vehicles[k]->getVehicle();
         if(vehicles[k] != nullptr && vehicles[k]->getParkingDuration() > maxParkingDuration) {
-            totalOverstaying++;
+           totalOverstaying++;
            if(vName == "Car") {
-            carOverstaying++;
+            carOverstaying += vehicles[k]->getParkingDuration() - maxParkingDuration;
            } else if( vName == "Bus") {
-            busOverstaying++;
+            busOverstaying += vehicles[k]->getParkingDuration() - maxParkingDuration;
            } else {
-            bikeOverstaying++;
+            bikeOverstaying += vehicles[k]->getParkingDuration() - maxParkingDuration;
            }
         }
     }

@@ -33,7 +33,6 @@ int main() {
             continue;
         }        
     }
-    sleep(15);
     
     cout << "Number of vehicles that have overstayed in the parking lot for more than 15 seconds: " << s2.countOverstayingVehicles(maxParkingDuration) << endl;
 }

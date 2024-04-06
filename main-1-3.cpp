@@ -68,9 +68,7 @@ int main() {
         s2.parkVehicle(motorbike);
     }
 
-    // Simulate time passing
-    sleep(16); // Assuming time has passed more than maxParkingDuration for all vehicles
-
+    
     // Perform test case: Count the number of vehicles that have overstayed
     int overstayingCount = s2.countOverstayingVehicles(maxParkingDuration);
     cout << "Number of vehicles that have overstayed in the parking lot for more than "

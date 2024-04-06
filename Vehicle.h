@@ -12,6 +12,7 @@ private:
     //string vehicleType;
 
 public:
+    Vehicle();
     Vehicle(int V_ID);
 
     int getID() const;

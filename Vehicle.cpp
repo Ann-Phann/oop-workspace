@@ -1,4 +1,7 @@
 #include "Vehicle.h"
+Vehicle::Vehicle(){
+
+}
 
 Vehicle::Vehicle(int V_ID) : ID(V_ID) {
     time(&timeOfEntry);

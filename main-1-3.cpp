@@ -34,7 +34,7 @@ int main() {
     }
 
     //Count the number of overstayed vehicles
-    s2.countOverstayingVehicles(maxParkingTime);
-    
+   int result = s2.countOverstayingVehicles(maxParkingTime);
+    cout << "Total overstaying vehicles: " << result << endl;
     return 0;
 }

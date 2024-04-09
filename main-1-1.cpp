@@ -20,4 +20,6 @@ int main (void)
     number_of_vehicle = num_of_car + num_of_bus + num_of_motor;
 
     
+
+    
 }

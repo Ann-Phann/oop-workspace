@@ -12,6 +12,7 @@ private:
 public:
     Vehicle(int vehicle_id);
     int getID() const;
+    int getParkingDuration(); 
 
 };
 

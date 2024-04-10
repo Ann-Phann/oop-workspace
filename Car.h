@@ -5,8 +5,9 @@
 #include <ctime>
 
 class Car : public Vehicle {
-private:
+
 public:
+    Car(int c_id);
     int getParkingDuration();
     
 };

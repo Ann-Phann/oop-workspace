@@ -7,31 +7,34 @@
 
 using namespace std;
 
-int main() {
-    ParkingLot s1(10);
+int main(void) {
+    int capacity = 10;
+    ParkingLot p1(capacity); //parking lot with capacity of 10
+    
+    //create an array of parking vehicle
+    Vehicle* parkingVehicle[capacity];
 
-    while (s1.getCount() < 10) {
-        string vehicleType;
-        cout << "Type of vehicle you want to park: ";
-        cin >> vehicleType;
+    //park vehicles
+    for (int i = 0; i < capacity; i++)
+    {
+        string type_vehicle;
+        cout << "type of vehicle you want to park? ";
+        cin >> type_vehicle;
 
-        int V_ID = 1;
-        Vehicle *parkingVehicle = nullptr;
-
-        if(vehicleType == "Car" || vehicleType == "Bus" || vehicleType == "Motorbike") {
-            parkingVehicle = new Vehicle(V_ID++);
-            int ParkingID = s1.parkVehicle(parkingVehicle); // Park the vehicle immediately after creating it
-            if (ParkingID != -1) {
-                cout << "Vehicle parked successfully. Park ID: " << ParkingID << endl;
-            } else {
-                delete parkingVehicle; // Free memory for the unparked vehicle
-                break; // Exit the loop as parking lot is full
-            }
-        } else {
-            cout << "Invalid Vehicle. Please enter Car, Bus, or Motorbike" << endl;
-            continue;
-        }        
+        if (type_vehicle == "Car" || type_vehicle == "Bus" || type_vehicle == "Motorbike")
+        {
+            parkingVehicle[i] = new Vehicle(i); 
+        }
+        p1.parkVehicle(parkingVehicle[i]);
     }
 
-    return 0;
+    //unpark vehicle from parking lot
+    int remove_id;
+    cout << "ID of vehicle you want to remove: ";
+    cin >> remove_id;
+    p1.unparkVehicle(remove_id);
+
+    //get numbers of vehicle currently is in the parking lot
+    cout << "current number of vehicles: " << p1.getCount() << endl;
+
 }

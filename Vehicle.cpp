@@ -5,7 +5,14 @@ using namespace std;
 
 Vehicle :: Vehicle(int vehicle_id) {
     ID = vehicle_id;
+    time(&timeOfEntry);
 }
+
+/*Reason why the output of GetParkingduration is negative:
+the getParkingDuration() function calculates the duration between the current time and the time of entry (timeOfEntry). 
+However, it seems that timeOfEntry is not initialized anywhere in the code you provided. Therefore, the result of 
+difftime(current_time, timeOfEntry) might be unexpected, leading to negative values if timeOfEntry contains garbage or 
+uninitialized data.*/
 
 int Vehicle :: getID() const{
     return ID;

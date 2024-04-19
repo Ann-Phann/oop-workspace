@@ -44,12 +44,12 @@ int main (void)
     //print result
     for (int i = 0; i < number_of_vehicle; i++)
     {
-        cout << vehicle[i] << ": " << vehicle[i]->getParkingDuration() << endl;
+        cout << i+1 << ": " << vehicle[i]->getParkingDuration() << endl;
     }
 
     for (int j = 0; j < number_of_vehicle; j++)
     {
-        delete[] vehicle[j];
+        delete vehicle[j];
     }
 
     

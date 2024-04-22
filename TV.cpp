@@ -25,6 +25,6 @@ double TV :: getScreenSize()
 double TV :: getPowerConsumption()
 {
     double power_consume;
-    power_consume = get_power() * screenSize/10;
+    power_consume = get_powerRating() * screenSize/10;
     return power_consume;
 }

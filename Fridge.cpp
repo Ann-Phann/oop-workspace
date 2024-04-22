@@ -25,6 +25,6 @@ double Fridge :: getVolume()
 double Fridge :: getPowerConsumption()
 {
     double power_consume;
-    power_consume = get_power() * 24 * volume/100;
+    power_consume = get_powerRating() * 24 * volume/100;
     return power_consume;
 }

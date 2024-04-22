@@ -25,22 +25,22 @@ double Appliance :: getPowerConsumption()
     return 0;
 }
 
-void Appliance :: set_power(int power)
+void Appliance :: set_powerRating(int power)
 {
     powerRating = power;
 }
 
-int Appliance :: get_power()
+int Appliance :: get_powerRating()
 {
     return powerRating;
 }
 
-void Appliance :: set_mode(bool mode)
+void Appliance :: set_isOn(bool mode)
 {
     isOn = mode;
 }
 
-bool Appliance :: get_mode()
+bool Appliance :: get_isOn()
 {
     return isOn;
 }

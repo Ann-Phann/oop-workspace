@@ -11,11 +11,11 @@ int main (void)
     appliance1.turnOn();
 
     // Set the power rating of the appliance
-    appliance1.set_power(1000);
+    appliance1.set_powerRating(1000);
 
     // Print the power rating and mode of the appliance
-    cout << "Appliance 1 power rating: " << appliance1.get_power() << endl;
-    if(appliance1.get_mode())
+    cout << "Appliance 1 power rating: " << appliance1.get_powerRating() << endl;
+    if(appliance1.get_isOn())
     {
         cout << "On" << endl;
     } else {
@@ -29,7 +29,7 @@ int main (void)
     appliance2.turnOff();
 
     // Print the power rating and mode of the appliance
-    cout << "Appliance 2 power rating: " << appliance2.get_power() << endl;
-    cout << "Appliance 2 mode: " << (appliance2.get_mode() ? "On" : "Off") << endl;
+    cout << "Appliance 2 power rating: " << appliance2.get_powerRating() << endl;
+    cout << "Appliance 2 mode: " << (appliance2.get_isOn() ? "On" : "Off") << endl;
     
 }

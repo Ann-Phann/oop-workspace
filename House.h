@@ -11,10 +11,10 @@ private:
 public:
     House();
     House(int numApp);
+    ~House();
     bool addAppliance(Appliance* appliance);
     double getTotalPowerConsumption();
-
     int get_current();
-    ~House();
+    
 };
 #endif

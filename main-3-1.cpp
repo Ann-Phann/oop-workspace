@@ -45,8 +45,8 @@ int main(void)
     cout << "Total power consumption: " << home.getTotalPowerConsumption() << endl;
     cout << "Total number of appliances: " << home.get_current() << endl;
 
-    for (int j = 0; j < numApp; j++)
-    {
-        delete app_array[j];
-    }
+    // for (int j = 0; j < numApp; j++)
+    // {
+    //     delete app_array[j];
+    // }
 }

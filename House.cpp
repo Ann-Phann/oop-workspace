@@ -37,7 +37,7 @@ int House :: get_current()
     return current_num_app;
 }
 
-House :: ~House()
-{
-    delete[] appliances;
-}
+// House :: ~House()
+// {
+//     delete[] appliances;
+// }

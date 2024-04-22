@@ -15,7 +15,7 @@ bool House :: addAppliance(Appliance* appliance)
 {
     for (int i = 0; i < numAppliances; i++)
     {
-        if (appliances && current_num_app < numAppliances)
+        if (current_num_app < numAppliances)
         {
             appliances[current_num_app] = appliance; 
             current_num_app++;

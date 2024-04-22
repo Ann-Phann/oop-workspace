@@ -1,53 +1,45 @@
 #include <iostream>
-#include <vector>
 #include "Appliance.h"
-#include "Fridge.h"
-#include "TV.h"
 #include "House.h"
 using namespace std;
 
-int main(void)
+House :: House() : numAppliances(0), appliances(nullptr), current_num_app(0)
+{}
+
+House :: House(int numApp) : numAppliances(numApp), current_num_app(0)
 {
-    int numApp = 3;
-    House home(numApp);
-    vector<Appliance*> app_array;
+    appliances = new Appliance*[numApp];
+}
 
-    for (int i = 0; i < numApp; i++)
+bool House :: addAppliance(Appliance* appliance)
+{
+    for (int i = 0; i < numAppliances; i++)
     {
-        string type_app;
-        cout << "type: ";
-        cin >> type_app;
-
-        int powerRating;
-        cout << "power rate: ";
-        cin >> powerRating;
-
-        if (type_app == "TV")
+        if (current_num_app < numAppliances)
         {
-            double screen;
-            cout << "screen size: ";
-            cin >> screen;
-            app_array.push_back(new TV(powerRating, screen));
-        } 
-        else if (type_app == "Fridge") {
-            double volume;
-            cout << "volume: ";
-            cin >> volume;
-            app_array.push_back(new Fridge(powerRating, volume));
-        }
-
-        if(home.addAppliance(app_array.back()))
-        {
-            cout << type_app << " successfully added" << endl;
-        } else {
-            cout << "house is full" << endl;
+            appliances[current_num_app] = appliance; 
+            current_num_app++;
+            return true;
         }
     }
-    cout << "Total power consumption: " << home.getTotalPowerConsumption() << endl;
-    cout << "Total number of appliances: " << home.get_current() << endl;
-
-    // Clean up dynamically allocated memory
-    for (Appliance* app : app_array) {
-        delete app;
+    return false;
+}
+double House :: getTotalPowerConsumption()
+{
+    double total_consume = 0.0;
+    for (int j = 0; j < numAppliances; j++)
+    {
+        total_consume = total_consume + appliances[j]->getPowerConsumption();
     }
+    return total_consume;
+}
+
+int House :: get_current()
+{
+    return current_num_app;
+}
+
+House :: ~House()
+{
+    delete[] appliances;
 }

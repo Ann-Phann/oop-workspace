@@ -11,19 +11,17 @@ House :: House(int numApp) : numAppliances(numApp), current_num_app(0)
     appliances = new Appliance*[numApp];
 }
 
-bool House :: addAppliance(Appliance* appliance)
+bool House::addAppliance(Appliance* appliance)
 {
-    for (int i = 0; i < numAppliances; i++)
+    if (current_num_app < numAppliances)
     {
-        if (current_num_app < numAppliances)
-        {
-            appliances[current_num_app] = appliance; 
-            current_num_app++;
-            return true;
-        }
+        appliances[current_num_app] = appliance; 
+        current_num_app++;
+        return true;
     }
     return false;
 }
+
 double House :: getTotalPowerConsumption()
 {
     double total_consume = 0.0;

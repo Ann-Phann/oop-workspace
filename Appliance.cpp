@@ -5,6 +5,9 @@ using namespace std;
 Appliance :: Appliance() : powerRating(0), isOn(false) 
 {}
 
+Appliance ::  ~Appliance()
+{}
+
 Appliance :: Appliance(int powerRating)
 {
     this->powerRating = powerRating;

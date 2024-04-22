@@ -13,6 +13,7 @@ public:
     void turnOn();
     void turnOff();
     virtual double getPowerConsumption();
+    virtual ~Appliance();
 
     //getter and setter method to get object's data
     void set_powerRating(int power);

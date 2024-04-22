@@ -8,10 +8,10 @@ private:
     double wide;
     double length;
 public:
-    Rectangle(double cx, double cy, double r_wide, double r_length) 
+    Rectangle(double r_wide, double r_length) 
     {
-        center.x = cx;
-        center.y = cy;
+        // center.x = cx;
+        // center.y = cy;
         wide = r_wide;
         length = r_length;
     }

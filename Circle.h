@@ -8,10 +8,10 @@ private:
     double radius;
 
 public:
-    Circle(double cx, double cy, double c_radius)
+    Circle(double c_radius)
     {
-        center.x = cx;
-        center.y = cy;
+        // center.x = cx;
+        // center.y = cy;
         radius = c_radius;
     }
 

@@ -11,7 +11,7 @@ int main(void)
     House home(numApp);
     Appliance* app_array[numApp];
 
-    for (int i = 0; i < numApp; i++)
+    for (int i = 0; i < numApp-1; i++)
     {
         string type_app;
         cout << "type: ";

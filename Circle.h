@@ -20,4 +20,7 @@ public:
         const double PI = 3.14;
         return PI * radius * radius;
     }
+    void draw() const override {
+        cout << "Drawing a circle";
+    }
 };

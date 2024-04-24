@@ -1,6 +1,7 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 #include <iostream>
+#include "Drawable.h"
 using namespace std;
 
 struct Point {
@@ -8,7 +9,7 @@ struct Point {
     double y;
 };
 
-class Shape {
+class Shape : public Drawable {
 protected:
     Point center;
 
@@ -17,9 +18,9 @@ public:
         center.x = 0;
         center.y = 0;
     }
-    virtual double get_area() 
-    {
-        return 0.0;
+    virtual double get_area() = 0;
+    void draw() const override {
+        cout << "Drawing a shape" << endl;
     }
 };
 #endif

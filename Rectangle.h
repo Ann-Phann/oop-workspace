@@ -20,4 +20,8 @@ public:
     {
         return wide*length;
     }
+
+    void draw() const override {
+        cout << "Drawing a rectangle";
+    }
 };

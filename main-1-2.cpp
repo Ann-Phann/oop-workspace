@@ -1,4 +1,4 @@
-//Q1-1: Shape Class Hierarchy
+//Question 1.2: Advanced Shape Class Hierarchy with Interfaces
 
 #include <iostream>
 #include "Shape.h"
@@ -14,6 +14,7 @@ int main (void)
     // Create instances of Circle and Rectangle
     shapes[0] = new Circle(5.0);
     shapes[1] = new Rectangle(4.0, 6.0);
+    
 
     // Print the area of each shape
     for (int i = 0; i < numShapes; i++) {

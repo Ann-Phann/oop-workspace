@@ -19,12 +19,12 @@ void Helicopter :: fly(int headwind, int minutes)
 
     if (get_weight() > 5670)
     {
-        fuel_use += 0.01* (get_weight() - 5670) * minutes;
+        fuel_use += 0.01 * (get_weight() - 5670) * minutes;
     }
 
     float remain_fuel = get_fuel() - fuel_use;
     int number_flight = get_numberOfFlights();
-    
+
     if (remain_fuel < 20)
     {
         remain_fuel = get_fuel();

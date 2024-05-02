@@ -68,25 +68,6 @@ anh xong airplane roi sao em ko qua lay
 
 
 câu heli nó sai vầy nè anh anh xem cách của em, rồi sửa giúp em với
-< Fuel after 45 minute flight, no head wind: 32.5%
-< Number of flights: 1
----
-> Fuel after 45 minute flight, no head wind: 100%
-> Number of flights: 0
-26c26
-< Fuel after 30 minute flight with 45km/h headwind: 49%
----
-> Fuel after 30 minute flight with 45km/h headwind: 100%
-28,29c28,29
-< Fuel after 30 minute flight with 40km/h: 49%
-< Number of flights: 2
----
-> Fuel after 30 minute flight with 40km/h: 100%
-> Number of flights: 0
-====End diff output====
-Q2-2 (0/10)
-File Airplane.cpp not found!
-File Airplane.h not found!
-File main-2-2.cpp not found!
-program.out failed to compile using files submission/main-2-2.cpp submission/Airplane.cpp submission/Helicopter.cpp submission/AirCraft.cpp
-Compiler stdout:
+
+
+check heli di em

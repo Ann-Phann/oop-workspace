@@ -11,7 +11,7 @@ Airplane::Airplane() : numPassengers(0) {
 Airplane::Airplane(int w, int p) : AirCraft(w), numPassengers(p) {
 }
 
-int Airplane::get_numPassengers() const {
+int Airplane::get_numPassengers() {
     return numPassengers;
 }
 
@@ -25,17 +25,18 @@ void Airplane::reducePassengers(int x) {
 }
 
 void Airplane::fly(int headwind, int minutes) {
-    if (fuel < 20) {
+    if (get_fuel() < 20) {
         return;  // Prevent flying if initial fuel is less than 20%
     }
 
     float fuelConsumptionRate = (headwind >= 60) ? 0.5 : 0.3;
     float fuelUsed = (fuelConsumptionRate + 0.001 * numPassengers) * minutes;
 
-    if (fuel - fuelUsed < 20) {  // Check if post-flight fuel would be below 20%
+    if (get_fuel() - fuelUsed < 20) {  // Check if post-flight fuel would be below 20%
         return;
     }
-
+    float fuel = get_fuel();
+    int numberOfFlight = get_numberOfFlights();
     fuel -= fuelUsed;
-    numberOfFlights++;
+    numberOfFlight++;
 }

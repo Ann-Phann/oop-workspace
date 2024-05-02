@@ -10,10 +10,7 @@ void Helicopter :: fly(int headwind, int minutes)
 {
     float fuel_use;
     
-    if (headwind < 40 && get_weight() < 5670)
-    {
-        fuel_use =  0.2*minutes;
-    }
+    fuel_use =  0.2*minutes;
 
     if (headwind > 40)
     {
@@ -27,6 +24,7 @@ void Helicopter :: fly(int headwind, int minutes)
 
     float remain_fuel = get_fuel() - fuel_use;
     int number_flight = get_numberOfFlights();
+    
     if (remain_fuel < 20)
     {
         remain_fuel = get_fuel();
@@ -48,3 +46,4 @@ void Helicopter :: set_name(string name)
 {
     this -> name = name;
 }
+

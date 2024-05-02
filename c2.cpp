@@ -22,8 +22,10 @@ void Helicopter::fly(int headwind, int minutes) {
     {
         fuelUsed += 0.01 * minutes;
     }
-
+    if (fuel - fuelUsed < 20)  // Check if fuel would be below 20% after flight
+        return;
     fuel -= fuelUsed;
+    
     numberOfFlights++;
 }
 

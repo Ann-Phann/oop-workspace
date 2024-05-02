@@ -69,19 +69,26 @@ void Helicopter::fly(int headwind, int minutes) {
 
     if (get_weight() > 5670)
     {
-        fuelUsed += 0.01 * minutes;
+        fuelUsed += 0.01 * (get_weight() - 5670) * minutes;
     }
-    if (get_fuel() - fuelUsed < 20)  // Check if fuel would be below 20% after flight
-        return;
 
-    float fuel = get_fuel();
-    int numberOfFlights = get_numberOfFlights();
-    fuel -= fuelUsed;
-    
-    numberOfFlights++;
+    float remain_fuel = get_fuel() - fuelUsed;
+    int number_flight = get_numberOfFlights();
+
+    if (remain_fuel < 20)
+    {
+        remain_fuel = get_fuel();
+        number_flight;
+    } else 
+    {
+        remain_fuel;
+        number_flight++;
+    }
 }
-
-string Helicopter ::get_name() {
+    
+    //get set method
+string Helicopter :: get_name()
+{
     return name;
 }
 

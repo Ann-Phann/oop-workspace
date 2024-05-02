@@ -63,6 +63,10 @@ Save your code in AirFleet.cpp and AirFleet.h, so we can check that your code co
 
 Submit all files.
 
+
+anh xong airplane roi sao em ko qua lay
+
+
 câu heli nó sai vầy nè anh anh xem cách của em, rồi sửa giúp em với
 < Fuel after 45 minute flight, no head wind: 32.5%
 < Number of flights: 1

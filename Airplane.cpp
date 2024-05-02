@@ -24,18 +24,26 @@ void Airplane::reducePassengers(int x) {
     } 
 }
 
-void Airplane::fly(int headwind, int minutes) {
-    if (fuel < 20) {
-        return;  // Prevent flying if initial fuel is less than 20%
-    }
-
-    float fuelConsumptionRate = (headwind >= 60) ? 0.5 : 0.3;
-    float fuelUsed = (fuelConsumptionRate + 0.001 * numPassengers) * minutes;
-
-    if (fuel - fuelUsed < 20) {  // Check if post-flight fuel would be below 20%
+void Airplane::fly(int headwind, int minutes)
+{
+    if (fuel < 20)
+    {
         return;
     }
 
+    float fuelUsed = 0.3 * minutes;
+
+    if (headwind >= 60)
+    {
+        fuelUsed = 0.5 * minutes;
+    }
+
+    if (fuel - fuelUsed < 20)  // Check if fuel would be below 20% after flight
+        return;
+
+    fuelUsed += 0.001 * numPassengers * minutes;
+
+    
     fuel -= fuelUsed;
     numberOfFlights++;
 }

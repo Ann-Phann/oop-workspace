@@ -1,0 +1,21 @@
+Question 1 - Base Class
+1-1. (15 marks) Define and implement a class named AirCraft that has the following constructor and attributes:
+
+AirCraft();
+AirCraft(int w);             // creates an Aircraft with weight w
+
+int weight;                  // the weight of AirCraft
+float fuel;                  // fuel percentage, initially 100%
+int numberOfFlights;         // initially 0
+
+void refuel();               // Resets fuel back to 100%
+void fly(int headwind, int minutes); // headwind in km/h and minutes (time flying)
+In your AirCraft class, include a default constructor, without parameters, which does nothing.
+
+Define the fly method as a virtual function. Every time the method is called, increase the numberOfFlights by 1.
+
+Define the refuel() method so that when it's called, fuel is reset to 100.
+
+Following the principles of encapsulation and information hiding, set the proper access modifiers for the attributes and provide methods to access the object’s data. You need to set the weight, fuel, and number of flights, as well as get the attributes values. The get and set function names should be the attribute name prefixed with "get_" or "set_" respectively
+
+Save your code in AirCraft.cpp and AirCraft.h, so we can check that your code compiles. Implement a program with a main method that tests your code in a file called main-1-1.cpp.

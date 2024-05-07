@@ -35,8 +35,20 @@ void Airplane::fly(int headwind, int minutes) {
     if (get_fuel() - fuelUsed < 20) {  // Check if post-flight fuel would be below 20%
         return;
     }
-    float fuel = get_fuel();
-    int numberOfFlight = get_numberOfFlights();
+
+    float fuelUsed = 0.3 * minutes;
+
+    if (headwind >= 60)
+    {
+        fuelUsed = 0.5 * minutes;
+    }
+
+    if (fuel - fuelUsed < 20)  // Check if fuel would be below 20% after flight
+        return;
+
+    fuelUsed += 0.001 * numPassengers * minutes;
+
+    
     fuel -= fuelUsed;
     numberOfFlight++;
 }

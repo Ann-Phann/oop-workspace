@@ -18,6 +18,8 @@ public:
         this->type = type;
     }
 
+    virtual ~GameEntity() = default;
+
     std::tuple<int, int> getPos() 
     {
         return position;

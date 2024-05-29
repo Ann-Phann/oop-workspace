@@ -2,7 +2,7 @@
 #define MINE_H
 
 #include "GameEntity.h"
-#include "Exploision.h"
+#include "Explosion.h"
 #include <iostream>
 
 class Mine : public GameEntity
@@ -11,7 +11,7 @@ class Mine : public GameEntity
     // function to return exploision object
 
     
-    Exploision explode() {
+    Explosion explode() {
         std::tuple<int, int> pos = getPos();
         return Exploision(pos, 'X');
         }

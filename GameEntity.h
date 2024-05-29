@@ -26,7 +26,7 @@ class GameEntity
             this->type = type;
         }
 
-            virtual ~GameEntity() {}
+        virtual ~GameEntity() {}
 
         /**
          * @brief Gets the position of the entity.
@@ -58,7 +58,6 @@ class GameEntity
 
    
 
-    virtual ~GameEntity() = default;
 };
 
 #endif // GAMEENTITY_H

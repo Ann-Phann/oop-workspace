@@ -9,8 +9,7 @@
 #include "Ship.h"
 #include "Mine.h"
 
-class Game 
-{
+class Game {
 private:
     std::vector<GameEntity*> entities;
     int gridWidth;

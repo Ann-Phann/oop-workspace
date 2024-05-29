@@ -12,8 +12,9 @@ class Mine : public GameEntity
 
     
     Explosion explode() {
+        this->setType('X');
         std::tuple<int, int> pos = getPos();
-        return Explosion(std::get<0>(pos), std::get<1>(pos), 'X');
+        return Explosion(std::get<0>(pos), std::get<1>(pos));
         }
 };
 

@@ -17,6 +17,20 @@ private:
 
 public:
     /**
+     * @brief Constructor to initialize the Game object.
+     */
+    Game() : gridWidth(0), gridHeight(0) {}
+
+    /**
+     * @brief Destructor to clean up dynamically allocated entities.
+     */
+    ~Game() {
+        for (auto entity : entities) {
+            delete entity;
+        }
+    }
+
+    /**
      * @brief Getter for the game entities.
      * @return A reference to the vector of game entities.
      */
@@ -28,7 +42,7 @@ public:
      * @brief Setter for the game entities.
      * @param new_entities A vector of game entities to set.
      */
-    void set_entities(std::vector<GameEntity*>& new_entities) {
+    void set_entities(const std::vector<GameEntity*>& new_entities) {
         this->entities = new_entities;
     }
 
@@ -74,6 +88,12 @@ public:
         for (int iteration = 0; iteration < maxIterations; ++iteration) {
             std::vector<GameEntity*> shipsToDestroy;
 
+            // Print the state of entities before iteration
+            std::cout << "Iteration: " << iteration << std::endl;
+            for (auto entity : entities) {
+                std::cout << "Entity Type: " << entity->getType() << std::endl;
+            }
+
             // Move all ships
             for (auto entity : entities) {
                 if (auto ship = dynamic_cast<Ship*>(entity)) {
@@ -103,17 +123,19 @@ public:
                 delete ship;
             }
 
+            // Print the state of entities after iteration
+            std::cout << "After Iteration: " << iteration << std::endl;
+            for (auto entity : entities) {
+                std::cout << "Entity Type: " << entity->getType() << std::endl;
+            }
+
             // Terminate if all ships are destroyed
             if (std::none_of(entities.begin(), entities.end(), [](GameEntity* entity) { return dynamic_cast<Ship*>(entity) != nullptr; })) {
                 break;
             }
         }
-    }
 
-    ~Game() {
-        for (auto entity : entities) {
-            delete entity;
-        }
+        std::cout << "Maximum number of iterations reached. Game over." << std::endl;
     }
 };
 

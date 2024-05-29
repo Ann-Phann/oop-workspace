@@ -88,12 +88,6 @@ public:
         for (int iteration = 0; iteration < maxIterations; ++iteration) {
             std::vector<GameEntity*> shipsToDestroy;
 
-            // Print the state of entities before iteration
-            std::cout << "Iteration: " << iteration << std::endl;
-            for (auto entity : entities) {
-                std::cout << "Entity Type: " << entity->getType() << std::endl;
-            }
-
             // Move all ships
             for (auto entity : entities) {
                 if (auto ship = dynamic_cast<Ship*>(entity)) {
@@ -123,19 +117,11 @@ public:
                 delete ship;
             }
 
-            // Print the state of entities after iteration
-            std::cout << "After Iteration: " << iteration << std::endl;
-            for (auto entity : entities) {
-                std::cout << "Entity Type: " << entity->getType() << std::endl;
-            }
-
             // Terminate if all ships are destroyed
             if (std::none_of(entities.begin(), entities.end(), [](GameEntity* entity) { return dynamic_cast<Ship*>(entity) != nullptr; })) {
                 break;
             }
         }
-
-        std::cout << "Maximum number of iterations reached. Game over." << std::endl;
     }
 };
 

@@ -1,44 +1,132 @@
-#ifndef GAMEENTITY_H
-#define GAMEENTITY_H
+#ifndef GAME_H
+#define GAME_H
 
+#include <vector>
 #include <iostream>
-#include <tuple>
+#include <algorithm>
+#include "GameEntity.h"
+#include "Utils.h"
+#include "Ship.h"
+#include "Mine.h"
 
-
-class GameEntity
-{
-protected:
-    std::tuple<int, int> position;
-    char type;
+class Game {
+private:
+    std::vector<GameEntity*> entities;
+    int gridWidth;
+    int gridHeight;
 
 public:
-    GameEntity(int x, int y, char type) 
-    {
-        position = std::make_tuple(x, y);
-        this->type = type;
+    /**
+     * @brief Getter for the game entities.
+     * @return A reference to the vector of game entities.
+     */
+    std::vector<GameEntity*>& get_entities() {
+        return entities;
     }
 
-    virtual ~GameEntity() = default;
-
-    std::tuple<int, int> getPos() 
-    {
-        return position;
+    /**
+     * @brief Setter for the game entities.
+     * @param new_entities A vector of game entities to set.
+     */
+    void set_entities(const std::vector<GameEntity*>& new_entities) {
+        this->entities = new_entities;
     }
 
-    char getType() 
-    {
-        return type;
+    /**
+     * @brief Initializes the game with specified numbers of ships and mines.
+     * @param numShips The number of Ship objects to create.
+     * @param numMines The number of Mine objects to create.
+     * @param gridWidth The width of the grid.
+     * @param gridHeight The height of the grid.
+     * @return A vector of pointers to the created game entities.
+     */
+    std::vector<GameEntity*> initGame(int numShips, int numMines, int gridWidth, int gridHeight) {
+        // initialize the grid width and height
+        this->gridWidth = gridWidth;
+        this->gridHeight = gridHeight;
+
+        // clear existing entities
+        entities.clear();
+
+        // initialize ships with random positions
+        for (int i = 0; i < numShips; i++) {
+            std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
+            GameEntity* ship = new Ship(std::get<0>(position), std::get<1>(position));
+            entities.push_back(ship);
+        }
+
+        // initialize mines with random positions
+        for (int j = 0; j < numMines; j++) {
+            std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
+            GameEntity* mine = new Mine(std::get<0>(position), std::get<1>(position));
+            entities.push_back(mine);
+        }
+
+        return entities;
     }
 
-    void setPos(int x, int y) 
-    {
-        position = std::make_tuple(x, y);
+    /**
+     * @brief Simulates the game loop.
+     * @param maxIterations The maximum number of iterations to simulate.
+     * @param mineDistanceThreshold The distance threshold to trigger a mine explosion.
+     */
+    void gameLoop(int maxIterations, double mineDistanceThreshold) {
+        for (int iteration = 0; iteration < maxIterations; ++iteration) {
+            std::vector<GameEntity*> shipsToDestroy;
+
+            // Print the state of entities before iteration
+            std::cout << "Iteration: " << iteration << std::endl;
+            for (auto entity : entities) {
+                std::cout << "Entity Type: " << entity->getType() << std::endl;
+            }
+
+            // Move all ships
+            for (auto entity : entities) {
+                if (auto ship = dynamic_cast<Ship*>(entity)) {
+                    ship->move(1, 0); // Move the ship by (1, 0)
+                }
+            }
+
+            // Check for proximity to mines
+            for (auto entity : entities) {
+                if (auto ship = dynamic_cast<Ship*>(entity)) {
+                    for (auto otherEntity : entities) {
+                        if (auto mine = dynamic_cast<Mine*>(otherEntity)) {
+                            double distance = Utils::calculateDistance(ship->getPos(), mine->getPos());
+                            if (distance <= mineDistanceThreshold) {
+                                mine->explode();
+                                shipsToDestroy.push_back(ship);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Remove destroyed ships
+            for (auto ship : shipsToDestroy) {
+                entities.erase(std::remove(entities.begin(), entities.end(), ship), entities.end());
+                delete ship;
+            }
+
+            // Print the state of entities after iteration
+            std::cout << "After Iteration: " << iteration << std::endl;
+            for (auto entity : entities) {
+                std::cout << "Entity Type: " << entity->getType() << std::endl;
+            }
+
+            // Terminate if all ships are destroyed
+            if (std::none_of(entities.begin(), entities.end(), [](GameEntity* entity) { return dynamic_cast<Ship*>(entity) != nullptr; })) {
+                break;
+            }
+        }
     }
 
-    void setType(char type) 
-    {
-        this->type = type;
+    ~Game() {
+        for (auto entity : entities) {
+            delete entity;
+        }
     }
 };
 
-#endif
+#endif // GAME_H

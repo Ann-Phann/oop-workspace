@@ -2,7 +2,7 @@
 
 #include "Effect.h"
 #include "GameEntity.h"
-#include "Exploision.h"
+#include "Explosion.h"
 #include "Ship.h"
 #include "Mine.h"
 

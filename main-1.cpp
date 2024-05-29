@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-int main (void) 
-{
-=======
 #include <iostream>
 
 #include "Effect.h"
@@ -21,6 +17,5 @@ int main()
     int y = std::get<1>(pos1) - std::get<1>(pos2);
     std::cout << "Distance between entity and effect: " << x << ", " << y << std::endl;
 
->>>>>>> e590af530a98fc7835209fc747245402ea411256
     return 0;
 }

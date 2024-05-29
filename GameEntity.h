@@ -37,6 +37,8 @@ public:
     {
         this->type = type;
     }
+
+    virtual ~GameEntity() = default;
 };
 
 #endif

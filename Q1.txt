@@ -1,0 +1,22 @@
+Define two base classes:
+
+GameEntity:
+
+Data Members:
+
+std::tuple<int, int> position (representing the position of the entity)
+char type (representing the type of the entity)
+Member Functions:
+
+Constructor GameEntity(int x, int y, char type)
+std::tuple<int, int> getPos(): Returns the position of the entity.
+char getType(): Returns the type of the entity.
+Effect:
+
+Member Functions:
+virtual void apply(GameEntity& entity): Accepts a GameEntity object as input and applies the effect to the entity. This function is pure virtual and needs to be implemented in derived classes.
+Define a class Utils with the following static functions:
+
+std::tuple<int, int> generateRandomPos(int gridWidth, int gridHeight): Returns a random position within a grid represented by gridWidth and gridHeight as a std::tuple<int, int>.
+double calculateDistance(std::tuple<int, int> pos1, std::tuple<int, int> pos2): Returns the Euclidean distance between two positions given as pos1 and pos2 as a double.
+In main-1.cpp, generate some random positions and calculate distances between them.

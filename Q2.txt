@@ -1,0 +1,18 @@
+Define the following classes:
+
+Explosion:
+
+Inherits from both GameEntity and Effect.
+Contains a parameterized constructor that takes an x , y position argument and sets the type character to 'E' for Explosion.
+Implements the apply() function in a way that modifies a GameEntity object. The method sets the position to (-1, -1) and the type to 'X'.
+Ship:
+
+Inherits from GameEntity.
+Contains a move(int dx, int dy) function that changes the ship's position.
+Has a parameterized constructor that takes an x , y position argument and sets the type character to 'S' for Ship.
+Mine:
+
+Inherits from GameEntity.
+Contains an explode() function that returns an Explosion object. The Mine type should change to 'X' after exploding.
+Has a parameterized constructor that takes an x , y position argument and sets the type character to 'M' for Mine.
+In main-2.cpp, create Ship and Mine objects and call their functions. Then, create an Explosion object and call apply() on a Ship object.

@@ -113,11 +113,12 @@ public:
             }
 
             if (allShipsDestroyed) {
-                std::cout << "All ships are destroyed. Game over." << std::endl;
+                //std::cout << "All ships are destroyed. Game over." << std::endl;
                 return;
             }
         }
-        std::cout << "Maximum iterations reached. Game over." << std::endl;
+        //std::cout << "Maximum iterations reached. Game over." << std::endl;
+        return;
     }
 
     ~Game() {

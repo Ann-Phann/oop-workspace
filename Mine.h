@@ -13,7 +13,7 @@ class Mine : public GameEntity
     
     Explosion explode() {
         std::tuple<int, int> pos = getPos();
-        return Exploision(pos, 'X');
+        return Exploision(std::get<0>(pos), std::get<1>(pos), 'X');
         }
 };
 

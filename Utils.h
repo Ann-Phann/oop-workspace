@@ -15,7 +15,7 @@ public:
     
     }
 
-    double calculateDistance(std::tuple<int, int> pos1, 
+    static double calculateDistance(std::tuple<int, int> pos1, 
                             std::tuple<int, int> pos2)
     {
         int dis1 = pow(std::get<0>(pos1) - std::get<0>(pos2), 2);

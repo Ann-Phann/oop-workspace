@@ -1,0 +1,12 @@
+Define a class named Game that includes the following:
+
+A private data member entities of type std::vector<GameEntity*> to store the game entities. Provide get_entities and set_entities functions.
+
+std::vector<GameEntity*> initGame(int numShips, int numMines, int gridWidth, int gridHeight): This method should create the specified number of Ship and Mine objects with random positions within the grid dimensions using the Utils::generateRandomPos method. The created objects should be stored in the entities vector, and the method should return the entities vector.
+
+void gameLoop(int maxIterations, double mineDistanceThreshold): This function simulates the game. In each iteration, it should perform the following steps:
+
+Call move(1, 0) for all Ship objects in entities.
+Check if any Ship object is within a certain distance (mineDistanceThreshold) of a Mine object. If a Ship is found within the threshold, call explode() for the corresponding Mine.
+The function should terminate when either all Ship objects are destroyed or the number of iterations reaches maxIterations.
+In main-3.cpp, create a Game object, and test its initGame() and gameLoop() functions.

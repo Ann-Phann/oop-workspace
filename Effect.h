@@ -4,8 +4,9 @@
 #include "GameEntity.h"
 #include <iostream>
 
-class Effect : public GameEntity {
-    private:
+class Effect{
+    public:
+    
         virtual void apply(GameEntity& entity) = 0;
 };
 

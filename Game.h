@@ -3,13 +3,13 @@
 
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "GameEntity.h"
 #include "Utils.h"
 #include "Ship.h"
 #include "Mine.h"
 
-class Game 
-{
+class Game {
 private:
     std::vector<GameEntity*> entities;
     int gridWidth;
@@ -24,33 +24,40 @@ public:
         return entities;
     }
 
-    void set_entities(std::vector<GameEntity*>& new_entities)
-    {
+    /**
+     * @brief Setter for the game entities.
+     * @param new_entities A vector of game entities to set.
+     */
+    void set_entities(const std::vector<GameEntity*>& new_entities) {
         this->entities = new_entities;
     }
 
-// functions
-    /*std::vector<GameEntity*> initGame(int numShips, int numMines, int gridWidth, int gridHeight): This method should create 
-    the specified number of Ship and Mine objects with random positions within the grid dimensions using the Utils::generateRandomPos method. 
-    The created objects should be stored in the entities vector, and the method should return the entities vector.*/
-    std::vector<GameEntity*> initGame(int numShips, int numMines, int gridWidth, int gridHeight)
-    {
-        //initialize the grid width and height
+    /**
+     * @brief Initializes the game with specified numbers of ships and mines.
+     * @param numShips The number of Ship objects to create.
+     * @param numMines The number of Mine objects to create.
+     * @param gridWidth The width of the grid.
+     * @param gridHeight The height of the grid.
+     * @return A vector of pointers to the created game entities.
+     */
+    std::vector<GameEntity*> initGame(int numShips, int numMines, int gridWidth, int gridHeight) {
+        // initialize the grid width and height
         this->gridWidth = gridWidth;
         this->gridHeight = gridHeight;
 
-        //initialize ships with random positions
-        for (int i = 0; i < numShips; i++)
-        {
-            std::tuple <int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
+        // clear existing entities
+        entities.clear();
+
+        // initialize ships with random positions
+        for (int i = 0; i < numShips; i++) {
+            std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
             GameEntity* ship = new Ship(std::get<0>(position), std::get<1>(position));
             entities.push_back(ship);
         }
 
-        //initialize mines with random positions
-        for (int j = 0; j < numMines; j++)
-        {
-            std::tuple <int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
+        // initialize mines with random positions
+        for (int j = 0; j < numMines; j++) {
+            std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
             GameEntity* mine = new Mine(std::get<0>(position), std::get<1>(position));
             entities.push_back(mine);
         }
@@ -120,4 +127,5 @@ public:
     }
     
 };
-#endif
+
+#endif // GAME_H

@@ -26,6 +26,8 @@ class GameEntity
             this->type = type;
         }
 
+            virtual ~GameEntity() {}
+
         /**
          * @brief Gets the position of the entity.
          * @return A tuple representing the position (x, y).

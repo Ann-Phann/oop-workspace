@@ -16,11 +16,7 @@ public:
         std::tuple<int, int> pos = getPos();
         int x = std::get<0>(pos);
         int y = std::get<1>(pos);
-        setPos(x + dx, y + dy);
-
-
-        std::tuple<int, int> currentPos = getPos();
-        
+        setPos(x + dx, y + dy);        
     }
 };
 #endif

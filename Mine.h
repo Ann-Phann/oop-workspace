@@ -7,15 +7,16 @@
 
 class Mine : public GameEntity
 {
-    Mine(int x, int y, char type) : GameEntity(x, y, 'M') {}
-    // function to return exploision object
-
+public:
+    Mine(int x, int y) : GameEntity(x, y, 'M')
+    {}
     
-    Explosion explode() {
-        
-        std::tuple<int, int> pos = getPos();
-        return Explosion(std::get<0>(pos), std::get<1>(pos), 'X');
-        }
+    Explosion explode()
+    {
+        this->setType('X');
+        return Explosion(std::get<0>(position), std::get<1>(position));
+    }
+
 };
 
 #endif // MINE_H

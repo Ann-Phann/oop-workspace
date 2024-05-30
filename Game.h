@@ -40,14 +40,14 @@ public:
 
         // Initialize characters with random positions
         for (int i = 0; i < numCharacters; i++) {
-            auto position = Utils::generateRandomPos(gridWidth, gridHeight);
+            std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
             Cell* character = new Character(std::get<0>(position), std::get<1>(position));
             grid.push_back(character);
         }
 
         // Initialize traps with random positions
         for (int j = 0; j < numTraps; j++) {
-            auto position = Utils::generateRandomPos(gridWidth, gridHeight);
+            std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
             Cell* trap = new Trap(std::get<0>(position), std::get<1>(position));
             grid.push_back(trap);
         }
@@ -61,16 +61,16 @@ public:
         for (int iteration = 0; iteration < maxIterations; iteration++) {
             for (int i = 0; i < static_cast<int>(grid.size()); i++) {
                 if (grid[i]->getType() == 'C') {
-                    // Move all characters
+                    // Move all characters to the right
                     Character* character = static_cast<Character*>(grid[i]);
                     character->move(1, 0);
-                    auto character_pos = character->getPos();
+                    std::tuple<int, int> character_pos = character->getPos();
 
                     // Check if any character is within a certain distance of a trap
                     for (int j = 0; j < static_cast<int>(grid.size()); j++) {
                         if (grid[j]->getType() == 'T') {
                             Trap* trap = static_cast<Trap*>(grid[j]);
-                            auto trap_pos = trap->getPos();
+                            std::tuple<int, int> trap_pos = trap->getPos();
                             double distance = Utils::calculateDistance(character_pos, trap_pos);
 
                             if (distance <= trapActivationDistance) {

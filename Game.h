@@ -79,3 +79,34 @@ public:
 };
 
 #endif // GAME_H
+
+
+/*All files found, +1 marks.
+Successfully compiled program.out with files main-3.cpp. +2 marks
+program.out failed to compile using files source/test-3-1.cpp
+Compiler stdout:
+
+-------
+Compiler stderr:
+In file included from source/test-3-1.cpp:1:0:
+source/Game.h: In member function ‘void Game::gameLoop(int, double, int, int)’:
+source/Game.h:54:26: warning: decomposition declaration only available with -std=c++1z or -std=gnu++1z
+                     auto [x, y] = character->getPos();
+                          ^
+source/test-3-1.cpp: In function ‘int main()’:
+source/test-3-1.cpp:19:26: error: no matching function for call to ‘Game::gameLoop(int, double)’
+     game.gameLoop(20, 2.0);
+                          ^
+In file included from source/test-3-1.cpp:1:0:
+source/Game.h:46:10: note: candidate: void Game::gameLoop(int, double, int, int)
+     void gameLoop(int maxIterations, double trapActivationDistance, int gridWidth, int gridHeight) {
+          ^~~~~~~~
+source/Game.h:46:10: note:   candidate expects 4 arguments, 2 provided
+source/test-3-1.cpp:33:27: error: no matching function for call to ‘Game::gameLoop(int, double)’
+     game2.gameLoop(20, 2.0);
+                           ^
+In file included from source/test-3-1.cpp:1:0:
+source/Game.h:46:10: note: candidate: void Game::gameLoop(int, double, int, int)
+     void gameLoop(int maxIterations, double trapActivationDistance, int gridWidth, int gridHeight) {
+          ^~~~~~~~
+source/Game.h:46:10: note:   candidate expects 4 arguments, 2 provided*/

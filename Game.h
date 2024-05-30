@@ -114,3 +114,6 @@ public:
 };
 
 #endif // GAME_H
+
+
+// dung lam auto nua anh oi 

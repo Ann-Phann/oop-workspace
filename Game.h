@@ -58,7 +58,8 @@ public:
     }
 
     // Simulates the game
-    void gameLoop(int maxIterations, double trapActivationDistance) {
+    void gameLoop(int maxIterations, double trapActivationDistance) 
+    {
         for (int iteration = 0; iteration < maxIterations; iteration++) {
             for (int i = 0; i < static_cast<int>(entities.size()); i++) {
                 if (entities[i]->getType() == 'C') {
@@ -81,7 +82,8 @@ public:
                     }
 
                     // Check if the character has won the game
-                    auto [x, y] = character->getPos();
+                    int x = std::get<0>(character_pos);
+                    int y = std::get<1>(character_pos);
                     if (x >= gridWidth || y >= gridHeight || x < 0 || y < 0) {
                         std::cout << "Character has won the game!" << std::endl;
                         return;
@@ -115,5 +117,3 @@ public:
 
 #endif // GAME_H
 
-
-// dung lam auto nua anh oi 

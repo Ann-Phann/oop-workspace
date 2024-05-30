@@ -90,15 +90,13 @@ public:
                     }
                 }
             }
-           
-
-
         }
         std::cout << "Maximum number of iterations reached. Game over." << std::endl;
     }
 
-    ~Game() {
-        for (auto entity : grid) {
+    ~Game() 
+    {
+        for (auto& entity : grid) {
             delete entity;
         }
     }

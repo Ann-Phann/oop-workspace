@@ -96,34 +96,34 @@ public:
 std::vector<Cell*> initGame(int numCharacters, int numTraps, int gridWidth, int gridHeight) {
         this->gridWidth = gridWidth;
         this->gridHeight = gridHeight;
-        cells.clear();
+        grid.clear();
 
         for (int i = 0; i < numCharacters; i++) {
             std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
             Cell* character = new Character(std::get<0>(position), std::get<1>(position));
-            cells.push_back(character);
+            grid.push_back(character);
         }
 
         for (int j = 0; j < numTraps; j++) {
             std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
             Cell* trap = new Trap(std::get<0>(position), std::get<1>(position));
-            cells.push_back(trap);
+            grid.push_back(trap);
         }
 
-        return cells;
+        return grid;
     }
 
     void gameLoop(int maxIterations, double trapActivationDistance) {
         for (int iteration = 0; iteration < maxIterations; iteration++) {
-            for (int i = 0; i < static_cast<int>(cells.size()); i++) {
-                if (cells[i]->getType() == 'C') {
-                    Character* character = static_cast<Character*>(cells[i]);
+            for (int i = 0; i < static_cast<int>(grid.size()); i++) {
+                if (grid[i]->getType() == 'C') {
+                    Character* character = static_cast<Character*>(grid[i]);
                     character->move(1, 0);
                     std::tuple<int, int> char_pos = character->getPos();
 
-                    for (int j = 0; j < static_cast<int>(cells.size()); j++) {
-                        if (cells[j]->getType() == 'T') {
-                            Trap* trap = static_cast<Trap*>(cells[j]);
+                    for (int j = 0; j < static_cast<int>(grid.size()); j++) {
+                        if (grid[j]->getType() == 'T') {
+                            Trap* trap = static_cast<Trap*>(grid[j]);
                             std::tuple<int, int> trap_pos = trap->getPos();
                             double distance = Utils::calculateDistance(char_pos, trap_pos);
 

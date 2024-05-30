@@ -90,20 +90,9 @@ public:
                     }
                 }
             }
+           
 
-            // Check if all characters are destroyed
-            bool allCharactersDestroyed = std::all_of(grid.begin(), grid.end(), [](Cell* grid) {
-                if (grid->getType() == 'C') {
-                    Character* character = static_cast<Character*>(grid);
-                    return character->getType() == 'X'; // 'X' means the character is destroyed
-                }
-                return true;
-            });
 
-            if (allCharactersDestroyed) {
-                std::cout << "All characters are destroyed. Game over." << std::endl;
-                return;
-            }
         }
         std::cout << "Maximum number of iterations reached. Game over." << std::endl;
     }

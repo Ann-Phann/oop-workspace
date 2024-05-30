@@ -9,7 +9,10 @@ private:
     char type;
 
 public:
-    Cell(int x, int y, char type) : position(x, y), type(type) {}
+    Cell(int x, int y, char type){
+        this->type = type;
+        this->position = std::make_tuple(x, y);
+    }
 
     std::tuple<int, int> getPos() const {
         return position;

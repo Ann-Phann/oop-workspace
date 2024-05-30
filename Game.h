@@ -13,7 +13,7 @@
 
 class Game {
 private:
-    std::vector<Cell*> entities;
+    std::vector<Cell*> grid;
     int gridWidth;
     int gridHeight;
 
@@ -23,13 +23,13 @@ public:
     }
 
     // Getter for entities
-    std::vector<Cell*>& get_entities() {
-        return entities;
+    std::vector<Cell*>& getGrid() {
+        return grid;
     }
 
     // Setter for entities
-    void set_entities(const std::vector<Cell*>& new_entities) {
-        this->entities = new_entities;
+    void setGrid(const std::vector<Cell*>& new_entities) {
+        this->grid = new_entities;
     }
 
     // Initializes the game with specified numbers of characters and traps
@@ -38,40 +38,40 @@ public:
         this->gridHeight = gridHeight;
 
         // Clear existing entities
-        entities.clear();
+        grid.clear();
 
         // Initialize characters with random positions
         for (int i = 0; i < numCharacters; i++) {
             auto position = Utils::generateRandomPos(gridWidth, gridHeight);
             Cell* character = new Character(std::get<0>(position), std::get<1>(position));
-            entities.push_back(character);
+            grid.push_back(character);
         }
 
         // Initialize traps with random positions
         for (int j = 0; j < numTraps; j++) {
             auto position = Utils::generateRandomPos(gridWidth, gridHeight);
             Cell* trap = new Trap(std::get<0>(position), std::get<1>(position));
-            entities.push_back(trap);
+            grid.push_back(trap);
         }
 
-        return entities;
+        return grid;
     }
 
     // Simulates the game
     void gameLoop(int maxIterations, double trapActivationDistance) 
     {
         for (int iteration = 0; iteration < maxIterations; iteration++) {
-            for (int i = 0; i < static_cast<int>(entities.size()); i++) {
-                if (entities[i]->getType() == 'C') {
+            for (int i = 0; i < static_cast<int>(grid.size()); i++) {
+                if (grid[i]->getType() == 'C') {
                     // Move all characters
-                    Character* character = static_cast<Character*>(entities[i]);
+                    Character* character = static_cast<Character*>(grid[i]);
                     character->move(1, 0);
                     auto character_pos = character->getPos();
 
                     // Check if any character is within a certain distance of a trap
-                    for (int j = 0; j < static_cast<int>(entities.size()); j++) {
-                        if (entities[j]->getType() == 'T') {
-                            Trap* trap = static_cast<Trap*>(entities[j]);
+                    for (int j = 0; j < static_cast<int>(grid.size()); j++) {
+                        if (grid[j]->getType() == 'T') {
+                            Trap* trap = static_cast<Trap*>(grid[j]);
                             auto trap_pos = trap->getPos();
                             double distance = Utils::calculateDistance(character_pos, trap_pos);
 
@@ -92,9 +92,9 @@ public:
             }
 
             // Check if all characters are destroyed
-            bool allCharactersDestroyed = std::all_of(entities.begin(), entities.end(), [](Cell* entity) {
-                if (entity->getType() == 'C') {
-                    Character* character = static_cast<Character*>(entity);
+            bool allCharactersDestroyed = std::all_of(grid.begin(), grid.end(), [](Cell* grid) {
+                if (grid->getType() == 'C') {
+                    Character* character = static_cast<Character*>(grid);
                     return character->getType() == 'X'; // 'X' means the character is destroyed
                 }
                 return true;
@@ -109,7 +109,7 @@ public:
     }
 
     ~Game() {
-        for (auto entity : entities) {
+        for (auto entity : grid) {
             delete entity;
         }
     }

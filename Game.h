@@ -81,7 +81,8 @@ public:
                     }
 
                     // Check if the character has won the game
-                    auto [x, y] = character->getPos();
+                    int x = std::get<0>(character->getPos());
+                    int y = std::get<1>(character->getPos());
                     if (x >= gridWidth || y >= gridHeight || x < 0 || y < 0) {
                         std::cout << "Character has won the game!" << std::endl;
                         return;

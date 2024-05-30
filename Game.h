@@ -18,8 +18,7 @@ private:
     int gridHeight;
 
 public:
-    Game() {
-    }
+    Game() {}
 
     // Getter for entities
     std::vector<Cell*>& getGrid() {
@@ -95,7 +94,7 @@ public:
 
     ~Game() 
     {
-        for (auto& entity : grid) {
+        for (auto entity : grid) {
             delete entity;
         }
     }

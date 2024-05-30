@@ -8,8 +8,10 @@ public:
     Character(int x, int y) : Cell(x, y, 'C') {}
 
     void move(int dx, int dy) {
-        auto [x, y] = getPos();
-        setPos(x + dx, y + dy);
+       std::tuple<int, int> pos = getPos();
+        int x = std::get<0>(pos);
+        int y = std::get<1>(pos);
+        setPos(x + dx, y + dy);    
     }
 };
 

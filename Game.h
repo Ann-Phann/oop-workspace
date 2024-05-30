@@ -19,7 +19,6 @@ private:
 
 public:
     Game() {
-        std::srand(static_cast<unsigned int>(std::time(0))); // Seed for random number generation
     }
 
     // Getter for entities

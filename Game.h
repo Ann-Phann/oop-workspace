@@ -1,92 +1,53 @@
+
+
+
 #ifndef GAME_H
 #define GAME_H
 
-#include "Cell.h"
-#include "Character.h"
-#include "Utils.h"
-#include "Trap.h"
-
 #include <vector>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include "Cell.h"
+#include "Character.h"
+#include "Trap.h"
+#include "Utils.h"
 
-class Game 
-{
+class Game {
 private:
     std::vector<Cell*> grid;
-    int gridWidth;
-    int gridHeight;
 
 public:
-    //default constructor
-    Game()
-    {}
+    Game() {
+        std::srand(std::time(0)); // Seed for random number generation
 
-    std::vector<Cell*>& getGrid()
-    {
-        return this-> grid;
+        //or 
+        // std::srand(static_cast<unsigned int>(std::time(0)));
     }
 
-    std::vector<Cell*> initGame(int numCharacters, int numTraps, int gridWidth, int gridHeight)
-    {
-        //initialize game window
-        this->gridWidth = gridWidth;
-        this-> gridHeight = gridHeight;
-
-        //initializes the game with a certain number of each object at random positions in the grid.
-        for (int i = 0; i < numCharacters; i++)
-        {
-            std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
-            Cell* character = new Character(std::get<0>(position), std::get<1>(position));
-            grid.push_back(character);
-        }
-
-        for (int i = 0; i < numTraps; i++)
-        {
-            std::tuple<int, int> position = Utils::generateRandomPos(gridWidth, gridHeight);
-            Cell* trap = new Trap(std::get<0>(position), std::get<1>(position));
-            grid.push_back(trap);
-        }
-
+    std::vector<Cell*>& getGrid() {
         return grid;
     }
 
-
-    void gameLoop(int maxIterations, double trapActivationDistance)
-    {
-        //moves all Character objects in the grid to the right by calling the move(1,0) function.
-        for (int i = 0; i < maxIterations; i++)
-        {
-            for (int numGrid = 0; numGrid < static_cast<int>(grid.size()); numGrid++)
-            {
-                if(grid[numGrid]->getType() == 'C')
-                {
-                    Character* character = static_cast<Character*>(grid[numGrid]);
-                    character->move(1,0);
-                    std::tuple <int, int> char_pos = character->getPos();
-                }
-
-                //Checks for any Trap objects nearby each Character. If a Trap object is within the trapActivationDistance, the Trap's apply function is called on the Character.
-                for (int j = 0; j < static_cast<int>(grid.size()); j++)
-                {
-                    if(grid[j]->getType() == 'T')
-                    {
-                        Trap* trap = static_cast<Trap*>(grid[j]);
-                        if(Utils::calculateDistance(grid[numGrid]->getPos(), grid[j]->getPos()) <= trapActivationDistance)
-                        {
-                            trap->apply(*grid[numGrid]);
-                        }
-                    }
-                }
-            }
+    void initGame(int numCharacters, int numTraps, int gridWidth, int gridHeight) {
+        // Initialize characters at random positions
+        for (int i = 0; i < numCharacters; ++i) {
+            auto pos = Utils::generateRandomPos(gridWidth, gridHeight);
+            grid.push_back(new Character(std::get<0>(pos), std::get<1>(pos)));
         }
-        std::cout << "Maximum number of iterations reached. Game over."<< std::endl;
-        return;
+
+        // Initialize traps at random positions
+        for (int i = 0; i < numTraps; ++i) {
+            auto pos = Utils::generateRandomPos(gridWidth, gridHeight);
+            grid.push_back(new Trap(std::get<0>(pos), std::get<1>(pos)));
+        }
     }
+
     void gameLoop(int maxIterations, double trapActivationDistance, int gridWidth, int gridHeight) {
         for (int iteration = 0; iteration < maxIterations; ++iteration) {
             for (auto& cell : grid) {
                 // Move characters
-                if (Character* character = dynamic_cast<Character*>(cell)) {
+                if (Character* character = static_cast<Character*>(cell)) {
                     character->move(1, 0);
 
                     // Check if the character has won the game
@@ -98,7 +59,7 @@ public:
 
                     // Check for nearby traps
                     for (auto& otherCell : grid) {
-                        if (Trap* trap = dynamic_cast<Trap*>(otherCell)) {
+                        if (Trap* trap = static_cast<Trap*>(otherCell)) {
                             if (trap->isActive() && Utils::calculateDistance(character->getPos(), trap->getPos()) <= trapActivationDistance) {
                                 trap->apply(*character);
                             }
@@ -116,8 +77,5 @@ public:
         }
     }
 };
-#endif
 
-
-
-//anh lam giong bai workshop a chu dung lam dynamic cast
+#endif // GAME_H

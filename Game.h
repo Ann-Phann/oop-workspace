@@ -23,7 +23,24 @@ public:
     std::vector<Cell*>& getGrid() {
         return grid;
     }
-    ~Game() {
+
+    void initGame(int numCharacters, int numTraps, int gridWidth, int gridHeight) {
+        // Initialize characters at random positions
+        for (int i = 0; i < numCharacters; ++i) {
+            auto pos = Utils::generateRandomPos(gridWidth, gridHeight);
+            grid.push_back(new Character(std::get<0>(pos), std::get<1>(pos)));
+        }
+
+        // Initialize traps at random positions
+        for (int i = 0; i < numTraps; ++i) {
+            auto pos = Utils::generateRandomPos(gridWidth, gridHeight);
+            grid.push_back(new Trap(std::get<0>(pos), std::get<1>(pos)));
+        }
+    }
+
+
+
+~Game() {
         for (auto& cell : grid) {
             delete cell;
         }

@@ -1,0 +1,69 @@
+Upon completion, please upload the following files for grading:
+
+Cell.h, Effect.h, Utils.h for Question 1.
+Trap.h, Character.h for Question 2.
+Game.h for Question 3.
+main-1.cpp, main-2.cpp, main-3.cpp for testing each respective question.
+Note: this is a timed quiz. You may check the remaining time you have at any point while taking the quiz by pressing the keyboard combination SHIFT, ALT, and T... Again: SHIFT, ALT, and T...
+ 
+Flag question: Spacer
+Question 1: Base and Utility Classes
+Task: Define two base classes: Cell and Effect, and a utility class Utils.
+
+Requirements:
+
+Cell: A class representing a single cell in a game grid, with members:
+std::tuple<int, int> position (representing the cell's position),
+char type (representing the type of entity in the cell).
+The class should include the following member functions:
+
+Cell(int x, int y, char type)
+std::tuple<int, int> getPos()
+char getType()
+void setPos(int x, int y)
+void setType(char type)
+Effect: A class with a pure virtual function virtual void apply(Cell& cell).
+
+Utils: A class with static functions:
+std::tuple<int, int> generateRandomPos(int gridWidth, int gridHeight) (returns a random position within a grid. (0,0) is the first position).
+double calculateDistance(std::tuple<int, int> pos1, std::tuple<int, int> pos2) (returns the Euclidean distance between two positions).
+
+Additionally, create a main-1.cpp file to test the functionality of the classes defined above.
+
+Question 2: Derived Classes and Polymorphism
+Task: Define classes Trap and Character.
+
+Trap:
+
+Inherits from Cell and Effect.
+Has constructor Trap(int x, int y)
+The trap's cell type is 'T'.
+Has a bool member active and a function bool isActive() to check if the trap is still active.
+Modifies a cell's type to 'T' and deactivates the trap when apply(Cell& cell) is called.
+Character:
+
+Inherits from Cell.
+Has constructor Character(int x, int y)
+Has a member function void move(int dx, int dy) to change the character's position.
+The character's cell type is 'C'.
+Create a main-2.cpp file to demonstrate the functionality of the Trap and Character classes and their interaction with each other.
+
+Question 3: Game Mechanics and Winning Conditions
+Task: Define a class Game to handle the game mechanics and winning conditions.
+
+Requirements:
+
+Has a default constructor.
+The Game class should have a private member std::vector<Cell*> grid. and a std::vector<Cell*>& getGrid() function.
+
+It should have a function initGame(int numCharacters, int numTraps, int gridWidth, int gridHeight) that initializes the game with a certain number of each object at random positions in the grid.
+
+The Game class should provide a function gameLoop(int maxIterations, double trapActivationDistance) that:
+
+Runs the game for a certain number of iterations.
+In each iteration, moves all Character objects in the grid to the right by calling the move(1,0) function.
+Checks for any Trap objects nearby each Character. If a Trap object is within the trapActivationDistance, the Trap's apply function is called on the Character.
+Checks if any Character has stepped outside of the grid. If so, the game is won by that Character. Prints 
+"Character has won the game!" and ends the game loop. 
+If the maximum number of iterations is reached and no character won, it prints "Maximum number of iterations reached. Game over."
+Write a main-3.cpp file to simulate the game using the Game class and demonstrate how it handles the game mechanics and winning conditions

@@ -110,8 +110,4 @@ public:
 /*All files found, +1 marks.
 Successfully compiled program.out with files main-3.cpp. +2 marks
 Successfully compiled program.out with files test-3-1.cpp. +2 marks
-4c4
-< Maximum number of iterations reached. Game over.
----
-> All characters are destroyed. Game over.
-Program exit status != 0 (program returned POSIX status code 6): abnormal termination of program (possibly a segmentation fault or timeout).*/
+Program exit status != 0 (program returned POSIX status code 6): abnormal termination of program (possibly a segmentation fault or timeout)*/

@@ -149,6 +149,7 @@ std::vector<Cell*> initGame(int numCharacters, int numTraps, int gridWidth, int 
             delete entity;
         }
     }
+    
 };
 
 #endif // GAME_H
